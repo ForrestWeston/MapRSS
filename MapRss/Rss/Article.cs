@@ -10,11 +10,20 @@ namespace Rss
     {
         #region Properties
 
+        private List<Feed> m_feeds = new List<Feed>(); 
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public string Author { get; set; }
         public string Location { get; set; }
         public string Contents { get; set; }
+
+        public List<Feed> Feeds
+        {
+            get
+            {
+                return m_feeds;
+            }
+        }
 
         #endregion
 

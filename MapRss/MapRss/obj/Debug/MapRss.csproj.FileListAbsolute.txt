@@ -7,3 +7,6 @@ C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\MapRss\MapRss\obj\Debug\MapRss.Pro
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\MapRss\MapRss\obj\Debug\MapRss.exe
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\MapRss\MapRss\obj\Debug\MapRss.pdb
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\MapRss.exe.config
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.exe
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.pdb
