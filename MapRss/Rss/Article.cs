@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rss
 {
-    class Article
+    public class Article
     {
         #region Properties
 

@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace Rss
 {
-    class Feed
+    public class Feed
     {
         #region Properties
 

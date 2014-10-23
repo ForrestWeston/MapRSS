@@ -14,6 +14,7 @@ namespace MapRss
     {
         TreeView m_treeViewTopics;
         TreeView m_treeViewFeeds;
+        Rss.Reader rssReader = new Rss.Reader();
 
         public Form1()
         {
@@ -82,7 +83,24 @@ namespace MapRss
 
         private void addFeed_Click(object sender, EventArgs e)
         {
+            //Create new form to be used as popup entry method
+            Form formUrl = new Form();
+            formUrl.Location = new Point(Size.Width / 2, Size.Height / 2);
+            formUrl.Text = "RSS URL";
+            formUrl.ClientSize = new System.Drawing.Size(500, 150);
 
+            //Create text and button
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = "Please enter URL:" };
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            Button add = new Button() { Text = "Add", Left = 350, Width = 100, Top = 70 };
+            
+            //Add event
+            add.Click += (senderClick, eArg) => { formUrl.Close(); AddFeed(textBox.Text); };
+            formUrl.Controls.Add(textBox);
+            formUrl.Controls.Add(add);
+            formUrl.Controls.Add(textLabel);
+            formUrl.AcceptButton = add;
+            formUrl.ShowDialog();
         }
 
         private void removeFeed_Click(object sender, EventArgs e)
@@ -116,6 +134,21 @@ namespace MapRss
             feed.Nodes.Add(root);
 
             return feed;
+        }
+
+        private void AddFeed(string url)
+        {
+            if(0 < url.Length)
+            {
+                rssReader.AddFeed(url);
+
+                m_treeViewFeeds.Nodes.Add(new TreeNode(url));
+
+                Feed_Click(null, null);
+
+                webBrowser1.Url = new Uri(rssReader.GetFeedUrl());
+                webBrowser1.Refresh();
+            }
         }
     }
 }
