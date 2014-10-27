@@ -40,6 +40,7 @@
             this.removeFeed = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMapRSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -148,6 +148,7 @@
             this.treeViewBase.Name = "treeViewBase";
             this.treeViewBase.Size = new System.Drawing.Size(209, 429);
             this.treeViewBase.TabIndex = 0;
+            this.treeViewBase.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewBase_AfterSelect);
             // 
             // tableLayoutPanel4
             // 
@@ -207,6 +208,15 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(511, 483);
             this.panelContent.TabIndex = 2;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(509, 481);
+            this.webBrowser1.TabIndex = 0;
             // 
             // panelMenu
             // 
@@ -273,15 +283,6 @@
             this.aboutMapRSSToolStripMenuItem.Name = "aboutMapRSSToolStripMenuItem";
             this.aboutMapRSSToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.aboutMapRSSToolStripMenuItem.Text = "About MapRSS";
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(509, 481);
-            this.webBrowser1.TabIndex = 0;
             // 
             // Form1
             // 

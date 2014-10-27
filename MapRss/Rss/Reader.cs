@@ -8,18 +8,9 @@ namespace Rss
 {
     public class Reader
     {
-        private List<Article> m_articles = new List<Article>();
-        private List<Feed> m_feeds = new List<Feed>();
+        private Dictionary<string, Feed> m_feeds = new Dictionary<string, Feed>();
 
         #region Properties
-
-        public List<Article> Articles
-        {
-            get
-            {
-                return m_articles;
-            }
-        }
 
         #endregion
 
@@ -45,9 +36,9 @@ namespace Rss
 
         }
 
-        public void AddFeed(string url)
+        public void AddFeed(string url, string name)
         {
-            m_feeds.Add(new Feed(url));
+            m_feeds.Add(name, new Feed(url));
         }
 
         //This needs to be revised. It is currently functioning this way for testing and needs to get a feed that is specified
@@ -55,12 +46,17 @@ namespace Rss
         {
             string url = "";
 
-            if(0 < m_feeds.Count)
-            {
-                url = m_feeds[0].Link;
-            }
+            //if(0 < m_feeds.Count)
+            //{
+            //    url = m_feeds[0].Articles[0].Link;
+            //}
 
             return url;
+        }
+
+        public List<Article> GetArticles(string name)
+        {
+            return m_feeds[name].Articles;
         }
 
         #endregion

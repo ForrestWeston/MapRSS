@@ -108,16 +108,33 @@ namespace MapRss
 
         }
 
+        private void treeViewBase_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeView test = sender as TreeView;
+
+            string name = test.SelectedNode.Text;
+
+            List<Rss.Article> articles = rssReader.GetArticles(name);
+
+            foreach (Rss.Article article in articles)
+            {
+                LinkLabel link = new LinkLabel();
+                link.Text = article.Title;
+
+                panelMenu.Controls.Add(link);
+            }
+        }
+
         //This will need to load from the XML save file to actually populate the topic area
         private TreeView PopulateTopicView()
         {
             TreeView topics = new TreeView();
 
-            TreeNode[] topicAreas = new TreeNode[] { new TreeNode("Sports"), new TreeNode("Heath")};
+            //TreeNode[] topicAreas = new TreeNode[] { new TreeNode("Sports"), new TreeNode("Heath")};
 
-            TreeNode root = new TreeNode("Topics", topicAreas);
+            //TreeNode root = new TreeNode("Topics", topicAreas);
 
-            topics.Nodes.Add(root);
+            //topics.Nodes.Add(root);
 
             return topics;
         }
@@ -127,11 +144,11 @@ namespace MapRss
         {
             TreeView feed = new TreeView();
 
-            TreeNode[] topicAreas = new TreeNode[] { new TreeNode("NY Times"), new TreeNode("US News and World Report") };
+            //TreeNode[] topicAreas = new TreeNode[] { new TreeNode("NY Times"), new TreeNode("US News and World Report") };
 
-            TreeNode root = new TreeNode("Feed", topicAreas);
+            //TreeNode root = new TreeNode("Feed", topicAreas);
 
-            feed.Nodes.Add(root);
+            //feed.Nodes.Add(root);
 
             return feed;
         }
@@ -140,15 +157,17 @@ namespace MapRss
         {
             if(0 < url.Length)
             {
-                rssReader.AddFeed(url);
+                rssReader.AddFeed(url, url);
 
                 m_treeViewFeeds.Nodes.Add(new TreeNode(url));
 
+                //This will just refresh the feed topics
                 Feed_Click(null, null);
 
-                webBrowser1.Url = new Uri(rssReader.GetFeedUrl());
-                webBrowser1.Refresh();
+                //webBrowser1.Url = new Uri(rssReader.GetFeedUrl());
+                //webBrowser1.Refresh();
             }
         }
+
     }
 }

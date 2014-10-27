@@ -21,3 +21,14 @@ C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\Git\MapRss\MapRss\obj\Debug\MapRss
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\Git\MapRss\MapRss\obj\Debug\MapRss.pdb
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\Git\MapRss\MapRss\bin\Debug\Rss.dll
 C:\Users\Kyle Lafferty\Documents\WSU\CPTS 323\Git\MapRss\MapRss\bin\Debug\Rss.pdb
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\bin\Debug\MapRss.exe.config
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.exe
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.pdb
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\bin\Debug\MapRss.exe
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\bin\Debug\MapRss.pdb
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\bin\Debug\Rss.dll
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\bin\Debug\Rss.pdb
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.Form1.resources
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.Properties.Resources.resources
+C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache

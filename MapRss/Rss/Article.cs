@@ -10,37 +10,32 @@ namespace Rss
     {
         #region Properties
 
-        private List<Feed> m_feeds = new List<Feed>(); 
         public string Title { get; set; }
         public DateTime Date { get; set; }
-        public string Author { get; set; }
+        public string Link { get; set; }
+        public string Description { get; set; }
         public string Location { get; set; }
-        public string Contents { get; set; }
-
-        public List<Feed> Feeds
-        {
-            get
-            {
-                return m_feeds;
-            }
-        }
 
         #endregion
 
         #region Constructors
 
-        public Article()
+        public Article(string title, DateTime date, string link, string description)
         {
-            FindLocation();
+            Title = title;
+            Date = date;
+            Link = link;
+            Description = description;
+            Location = FindLocation();
         }
 
         #endregion
 
         #region Helper Methods
 
-        private void FindLocation()
+        private string FindLocation()
         {
-
+            return null;
         }
 
         #endregion
