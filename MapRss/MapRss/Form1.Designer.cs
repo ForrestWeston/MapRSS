@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Feed = new System.Windows.Forms.Button();
@@ -39,9 +40,7 @@
             this.addFeed = new System.Windows.Forms.Button();
             this.removeFeed = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.panelMenu = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,12 +48,14 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMapRSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.panelContent.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panelContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,13 +66,14 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panelContent, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panelMenu, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.listView1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.88889F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(738, 549);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -198,35 +200,21 @@
             this.label1.Text = "Feeds";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelContent
+            // listView1
             // 
-            this.panelContent.BackColor = System.Drawing.Color.White;
-            this.panelContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelContent.Controls.Add(this.webBrowser1);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(224, 63);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(511, 483);
-            this.panelContent.TabIndex = 2;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(509, 481);
-            this.webBrowser1.TabIndex = 0;
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMenu.Location = new System.Drawing.Point(224, 3);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(511, 54);
-            this.panelMenu.TabIndex = 3;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.AutoArrange = false;
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1});
+            this.listView1.Location = new System.Drawing.Point(224, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(511, 54);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // menuStrip1
             // 
@@ -284,6 +272,26 @@
             this.aboutMapRSSToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.aboutMapRSSToolStripMenuItem.Text = "About MapRSS";
             // 
+            // panelContent
+            // 
+            this.panelContent.BackColor = System.Drawing.Color.White;
+            this.panelContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelContent.Controls.Add(this.webBrowser1);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(224, 63);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(511, 483);
+            this.panelContent.TabIndex = 2;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(509, 481);
+            this.webBrowser1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,9 +307,9 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.panelContent.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panelContent.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,8 +335,8 @@
         private System.Windows.Forms.Button addFeed;
         private System.Windows.Forms.Button removeFeed;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panelContent;
-        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }

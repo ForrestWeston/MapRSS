@@ -35,7 +35,7 @@ namespace Rss
 
         private string FindLocation()
         {
-            return null;
+            return String.Empty;
         }
 
         #endregion

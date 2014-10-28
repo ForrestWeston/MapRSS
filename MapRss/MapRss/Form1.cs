@@ -116,12 +116,19 @@ namespace MapRss
 
             List<Rss.Article> articles = rssReader.GetArticles(name);
 
+            // Set the view to show details.
+            listView1.View = View.Details;
+            listView1.Columns.Add("Title", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Description", -2, HorizontalAlignment.Left);
+
             foreach (Rss.Article article in articles)
             {
                 LinkLabel link = new LinkLabel();
                 link.Text = article.Title;
-
-                panelMenu.Controls.Add(link);
+                ListViewItem item = new ListViewItem(link.Text);
+                item.SubItems.Add(article.Description);
+                listView1.Items.Add(item);
+                //TODO: pull images from rss and add them to this view using ImageList object 
             }
         }
 
