@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace MapRss
 {
@@ -185,19 +186,48 @@ namespace MapRss
             ListView selectedItem = sender as ListView;
             string articleUrl = selectedItem.FocusedItem.SubItems[2].Text;
 
-            try
-            {
-                webBrowser1.Url = new Uri(articleUrl);
-                webBrowser1.Refresh();
-            }
-            catch (Exception)
-            {
-                
-                //ignore everything, e.g java script erros, and flash prompts, this will need to be fixed later 
-            }
+
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Url = new Uri(articleUrl);
+            webBrowser1.Refresh();
+            
+     
             
             
         }
 
+        private void webBrowserBack_Button_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoBack();
+        }
+
+        private void webBrowserFoward_Button_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoForward();
+        }
+        private void webBrowserRefresh_Button_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Refresh();
+        }
+
+
+        private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            try
+            {
+                webBrowserProgressBar.Value = Convert.ToInt32(e.CurrentProgress);
+                webBrowserProgressBar.Maximum = Convert.ToInt32(e.MaximumProgress);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void webBrowserTextOnly_Button_Click(object sender, EventArgs e)
+        {
+            //TODO: Figure out how to do this...
+        }
+
+   
     }
 }
