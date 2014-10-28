@@ -116,8 +116,11 @@ namespace MapRss
 
             List<Rss.Article> articles = rssReader.GetArticles(name);
 
+            //each time a new feed is selected clear out exisitng info 
+            listView1.Clear();
             // Set the view to show details.
             listView1.View = View.Details;
+            listView1.FullRowSelect = false;
             listView1.Columns.Add("Title", -2, HorizontalAlignment.Left);
             listView1.Columns.Add("Description", -2, HorizontalAlignment.Left);
 
@@ -127,6 +130,7 @@ namespace MapRss
                 link.Text = article.Title;
                 ListViewItem item = new ListViewItem(link.Text);
                 item.SubItems.Add(article.Description);
+                item.SubItems.Add(article.Link);
                 listView1.Items.Add(item);
                 //TODO: pull images from rss and add them to this view using ImageList object 
             }
@@ -174,6 +178,25 @@ namespace MapRss
                 //webBrowser1.Url = new Uri(rssReader.GetFeedUrl());
                 //webBrowser1.Refresh();
             }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView selectedItem = sender as ListView;
+            string articleUrl = selectedItem.FocusedItem.SubItems[2].Text;
+
+            try
+            {
+                webBrowser1.Url = new Uri(articleUrl);
+                webBrowser1.Refresh();
+            }
+            catch (Exception)
+            {
+                
+                //ignore everything, e.g java script erros, and flash prompts, this will need to be fixed later 
+            }
+            
+            
         }
 
     }
