@@ -24,8 +24,11 @@ namespace Rss
         #endregion
 
         #region Helper Methods
-
-
+        public string GetFeedTitle(string url)
+        {
+            var title = m_feeds.First(t => t.Key == url);
+            return title.Value.Title;
+        }
         #endregion
 
 

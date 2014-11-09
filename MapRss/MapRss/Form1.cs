@@ -109,6 +109,32 @@ namespace MapRss
 
         }
 
+        private void Build_ArticleDataGridView()
+        {
+            ArticleDataGridView.VirtualMode = true;
+            ArticleDataGridView.AutoSize = true;
+            ArticleDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            ArticleDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ArticleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            ArticleDataGridView.AllowUserToAddRows = false;
+            ArticleDataGridView.AllowUserToDeleteRows = false;
+            DataGridViewCheckBoxColumn CheckBoxColumn = new DataGridViewCheckBoxColumn();
+            {
+                CheckBoxColumn.Name = "Read";
+                CheckBoxColumn.FlatStyle = FlatStyle.Standard;
+                CheckBoxColumn.ThreeState = false;
+                CheckBoxColumn.CellTemplate = new DataGridViewCheckBoxCell();
+                CheckBoxColumn.CellTemplate.Style.BackColor = Color.Beige;
+
+            }
+            ArticleDataGridView.Columns.Insert(0, CheckBoxColumn);
+            ArticleDataGridView.Columns.Add("Title", "Title");
+            ArticleDataGridView.Columns.Add("Description", "Description");
+           
+        
+
+        }
+
         private void treeViewBase_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeView test = sender as TreeView;
@@ -116,25 +142,9 @@ namespace MapRss
             string name = test.SelectedNode.Text;
 
             List<Rss.Article> articles = rssReader.GetArticles(name);
+            Build_ArticleDataGridView();
 
-            //each time a new feed is selected clear out exisitng info 
-            listView1.Clear();
-            // Set the view to show details.
-            listView1.View = View.Details;
-            listView1.FullRowSelect = false;
-            listView1.Columns.Add("Title", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Description", -2, HorizontalAlignment.Left);
 
-            foreach (Rss.Article article in articles)
-            {
-                LinkLabel link = new LinkLabel();
-                link.Text = article.Title;
-                ListViewItem item = new ListViewItem(link.Text);
-                item.SubItems.Add(article.Description);
-                item.SubItems.Add(article.Link);
-                listView1.Items.Add(item);
-                //TODO: pull images from rss and add them to this view using ImageList object 
-            }
         }
 
         //This will need to load from the XML save file to actually populate the topic area
@@ -155,13 +165,8 @@ namespace MapRss
         private TreeView PopulateFeedView()
         {
             TreeView feed = new TreeView();
-
-            //TreeNode[] topicAreas = new TreeNode[] { new TreeNode("NY Times"), new TreeNode("US News and World Report") };
-
-            //TreeNode root = new TreeNode("Feed", topicAreas);
-
-            //feed.Nodes.Add(root);
-
+            feed.BeginUpdate();
+            feed.EndUpdate();
             return feed;
         }
 
@@ -170,7 +175,7 @@ namespace MapRss
             if(0 < url.Length)
             {
                 rssReader.AddFeed(url, url);
-
+                
                 m_treeViewFeeds.Nodes.Add(new TreeNode(url));
 
                 //This will just refresh the feed topics
@@ -200,7 +205,6 @@ namespace MapRss
         {
             webBrowser1.GoBack();
         }
-
         private void webBrowserFoward_Button_Click(object sender, EventArgs e)
         {
             webBrowser1.GoForward();
@@ -209,9 +213,7 @@ namespace MapRss
         {
             webBrowser1.Refresh();
         }
-
-
-        private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        private void webBrowser_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
             try
             {
@@ -222,7 +224,6 @@ namespace MapRss
             {
             }
         }
-
         private void webBrowserTextOnly_Button_Click(object sender, EventArgs e)
         {
             //TODO: Figure out how to do this...

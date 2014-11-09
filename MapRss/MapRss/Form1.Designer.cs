@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Feed = new System.Windows.Forms.Button();
@@ -46,11 +45,11 @@
             this.webBrowserBack_Button = new System.Windows.Forms.ToolStripButton();
             this.webBrowserFoward_Button = new System.Windows.Forms.ToolStripButton();
             this.webBrowserRefresh_Button = new System.Windows.Forms.ToolStripButton();
+            this.webBrowserTextOnly_Button = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.webBrowserProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +57,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMapRSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webBrowserTextOnly_Button = new System.Windows.Forms.ToolStripButton();
+            this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -66,6 +65,7 @@
             this.panelContent.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -76,7 +76,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panelContent, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listView1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ArticleDataGridView, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -268,6 +268,16 @@
             this.webBrowserRefresh_Button.Text = "Refresh";
             this.webBrowserRefresh_Button.Click += new System.EventHandler(this.webBrowserRefresh_Button_Click);
             // 
+            // webBrowserTextOnly_Button
+            // 
+            this.webBrowserTextOnly_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.webBrowserTextOnly_Button.Image = global::MapRss.Properties.Resources.TextModeButtonImage;
+            this.webBrowserTextOnly_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.webBrowserTextOnly_Button.Name = "webBrowserTextOnly_Button";
+            this.webBrowserTextOnly_Button.Size = new System.Drawing.Size(23, 22);
+            this.webBrowserTextOnly_Button.Text = "Text Only Mode";
+            this.webBrowserTextOnly_Button.Click += new System.EventHandler(this.webBrowserTextOnly_Button_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -296,24 +306,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(509, 458);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.webBrowser1_ProgressChanged);
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.AutoArrange = false;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
-            this.listView1.Location = new System.Drawing.Point(224, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(511, 54);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.webBrowser1.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.webBrowser_ProgressChanged);
             // 
             // menuStrip1
             // 
@@ -371,15 +364,17 @@
             this.aboutMapRSSToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.aboutMapRSSToolStripMenuItem.Text = "About MapRSS";
             // 
-            // webBrowserTextOnly_Button
+            // ArticleDataGridView
             // 
-            this.webBrowserTextOnly_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.webBrowserTextOnly_Button.Image = global::MapRss.Properties.Resources.TextModeButtonImage;
-            this.webBrowserTextOnly_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.webBrowserTextOnly_Button.Name = "webBrowserTextOnly_Button";
-            this.webBrowserTextOnly_Button.Size = new System.Drawing.Size(23, 22);
-            this.webBrowserTextOnly_Button.Text = "Text Only Mode";
-            this.webBrowserTextOnly_Button.Click += new System.EventHandler(this.webBrowserTextOnly_Button_Click);
+            this.ArticleDataGridView.AllowUserToAddRows = false;
+            this.ArticleDataGridView.AllowUserToDeleteRows = false;
+            this.ArticleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ArticleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ArticleDataGridView.Location = new System.Drawing.Point(224, 3);
+            this.ArticleDataGridView.Name = "ArticleDataGridView";
+            this.ArticleDataGridView.ReadOnly = true;
+            this.ArticleDataGridView.Size = new System.Drawing.Size(511, 54);
+            this.ArticleDataGridView.TabIndex = 3;
             // 
             // Form1
             // 
@@ -402,6 +397,7 @@
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,7 +423,6 @@
         private System.Windows.Forms.Button addFeed;
         private System.Windows.Forms.Button removeFeed;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panelContent;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton webBrowserBack_Button;
@@ -438,6 +433,7 @@
         private System.Windows.Forms.ToolStripButton webBrowserRefresh_Button;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton webBrowserTextOnly_Button;
+        private System.Windows.Forms.DataGridView ArticleDataGridView;
     }
 }
 
