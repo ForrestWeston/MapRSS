@@ -87,6 +87,35 @@ namespace Rss
         }
 
         #endregion
+
+        #region Methods
+
+        //Write Xml for the feed contents
+        public void WriteXml(XmlWriter w)
+        {
+            w.WriteStartElement("Feed");
+
+            //Write contents of the feed
+            w.WriteStartElement("Title");
+            w.WriteValue(Title);
+            w.WriteEndElement();
+            w.WriteStartElement("Description");
+            w.WriteValue(Description);
+            w.WriteEndElement();
+            w.WriteStartElement("Link");
+            w.WriteValue(Link);
+            w.WriteEndElement();
+            w.WriteStartElement("Language");
+            w.WriteValue(Language);
+            w.WriteEndElement();
+            w.WriteStartElement("PublishDate");
+            w.WriteValue(PublishDate);
+            w.WriteEndElement();
+
+            w.WriteEndElement();
+        }
+
+        #endregion
     }
 
 }

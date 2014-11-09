@@ -64,12 +64,17 @@ namespace MapRss
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            rssReader.Load();
 
+            m_treeViewFeeds = PopulateFeedView();
+
+            //Populate feeds
+            Feed_Click(null, null);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            rssReader.Save();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,10 +169,19 @@ namespace MapRss
         //This will need to load from the XML save file to actually populate the topic area
         private TreeView PopulateFeedView()
         {
-            TreeView feed = new TreeView();
-            feed.BeginUpdate();
-            feed.EndUpdate();
-            return feed;
+            TreeView feeds = new TreeView();
+
+            List<TreeNode> nodes = new List<TreeNode>();
+            foreach (String feed in rssReader.GetFeedNames())
+            {
+                nodes.Add(new TreeNode(feed));
+            }
+
+            TreeNode root = new TreeNode("Feeds", nodes.ToArray());
+
+            feeds.Nodes.Add(root);
+
+            return feeds;
         }
 
         private void AddFeed(string url)

@@ -40,3 +40,14 @@ C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.Form1.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.Properties.Resources.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache
+C:\Users\Kyle\MapRss\MapRss\bin\Debug\MapRss.exe.config
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.exe
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.pdb
+C:\Users\Kyle\MapRss\MapRss\bin\Debug\MapRss.exe
+C:\Users\Kyle\MapRss\MapRss\bin\Debug\MapRss.pdb
+C:\Users\Kyle\MapRss\MapRss\bin\Debug\Rss.dll
+C:\Users\Kyle\MapRss\MapRss\bin\Debug\Rss.pdb
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.Form1.resources
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.Properties.Resources.resources
+C:\Users\Kyle\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache

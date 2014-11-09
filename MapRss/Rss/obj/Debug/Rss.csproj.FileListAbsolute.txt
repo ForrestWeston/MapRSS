@@ -3,3 +3,8 @@ C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\Rss\bin\Deb
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\Rss\obj\Debug\Rss.dll
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\Rss\obj\Debug\Rss.pdb
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\Rss\obj\Debug\Rss.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\MapRss\Rss\bin\Debug\Rss.dll
+C:\Users\Kyle\MapRss\Rss\bin\Debug\Rss.pdb
+C:\Users\Kyle\MapRss\Rss\obj\Debug\Rss.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\MapRss\Rss\obj\Debug\Rss.dll
+C:\Users\Kyle\MapRss\Rss\obj\Debug\Rss.pdb
