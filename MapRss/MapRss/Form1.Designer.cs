@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -40,6 +41,15 @@
             this.addFeed = new System.Windows.Forms.Button();
             this.removeFeed = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.webBrowserBack_Button = new System.Windows.Forms.ToolStripButton();
+            this.webBrowserFoward_Button = new System.Windows.Forms.ToolStripButton();
+            this.webBrowserRefresh_Button = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.webBrowserProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,14 +58,14 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMapRSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowserTextOnly_Button = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.panelContent.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -200,6 +210,94 @@
             this.label1.Text = "Feeds";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panelContent
+            // 
+            this.panelContent.BackColor = System.Drawing.Color.White;
+            this.panelContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelContent.Controls.Add(this.toolStrip1);
+            this.panelContent.Controls.Add(this.webBrowser1);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(224, 63);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(511, 483);
+            this.panelContent.TabIndex = 2;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.webBrowserBack_Button,
+            this.webBrowserFoward_Button,
+            this.webBrowserRefresh_Button,
+            this.webBrowserTextOnly_Button,
+            this.toolStripSeparator1,
+            this.webBrowserProgressBar,
+            this.toolStripButton2});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(509, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // webBrowserBack_Button
+            // 
+            this.webBrowserBack_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.webBrowserBack_Button.Image = ((System.Drawing.Image)(resources.GetObject("webBrowserBack_Button.Image")));
+            this.webBrowserBack_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.webBrowserBack_Button.Name = "webBrowserBack_Button";
+            this.webBrowserBack_Button.Size = new System.Drawing.Size(23, 22);
+            this.webBrowserBack_Button.Text = "Back";
+            this.webBrowserBack_Button.Click += new System.EventHandler(this.webBrowserBack_Button_Click);
+            // 
+            // webBrowserFoward_Button
+            // 
+            this.webBrowserFoward_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.webBrowserFoward_Button.Image = global::MapRss.Properties.Resources.ForwardButtonImage;
+            this.webBrowserFoward_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.webBrowserFoward_Button.Name = "webBrowserFoward_Button";
+            this.webBrowserFoward_Button.Size = new System.Drawing.Size(23, 22);
+            this.webBrowserFoward_Button.Text = "Foward";
+            this.webBrowserFoward_Button.Click += new System.EventHandler(this.webBrowserFoward_Button_Click);
+            // 
+            // webBrowserRefresh_Button
+            // 
+            this.webBrowserRefresh_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.webBrowserRefresh_Button.Image = global::MapRss.Properties.Resources.RefreshButtonImage;
+            this.webBrowserRefresh_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.webBrowserRefresh_Button.Name = "webBrowserRefresh_Button";
+            this.webBrowserRefresh_Button.Size = new System.Drawing.Size(23, 22);
+            this.webBrowserRefresh_Button.Text = "Refresh";
+            this.webBrowserRefresh_Button.Click += new System.EventHandler(this.webBrowserRefresh_Button_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // webBrowserProgressBar
+            // 
+            this.webBrowserProgressBar.Name = "webBrowserProgressBar";
+            this.webBrowserProgressBar.Size = new System.Drawing.Size(100, 22);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(0, 23);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(509, 458);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.ProgressChanged += new System.Windows.Forms.WebBrowserProgressChangedEventHandler(this.webBrowser1_ProgressChanged);
+            // 
             // listView1
             // 
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -273,25 +371,15 @@
             this.aboutMapRSSToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.aboutMapRSSToolStripMenuItem.Text = "About MapRSS";
             // 
-            // panelContent
+            // webBrowserTextOnly_Button
             // 
-            this.panelContent.BackColor = System.Drawing.Color.White;
-            this.panelContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelContent.Controls.Add(this.webBrowser1);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(224, 63);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(511, 483);
-            this.panelContent.TabIndex = 2;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(509, 481);
-            this.webBrowser1.TabIndex = 0;
+            this.webBrowserTextOnly_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.webBrowserTextOnly_Button.Image = global::MapRss.Properties.Resources.TextModeButtonImage;
+            this.webBrowserTextOnly_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.webBrowserTextOnly_Button.Name = "webBrowserTextOnly_Button";
+            this.webBrowserTextOnly_Button.Size = new System.Drawing.Size(23, 22);
+            this.webBrowserTextOnly_Button.Text = "Text Only Mode";
+            this.webBrowserTextOnly_Button.Click += new System.EventHandler(this.webBrowserTextOnly_Button_Click);
             // 
             // Form1
             // 
@@ -308,9 +396,12 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.panelContent.ResumeLayout(false);
+            this.panelContent.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panelContent.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,7 +429,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton webBrowserBack_Button;
+        private System.Windows.Forms.ToolStripButton webBrowserFoward_Button;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.ToolStripProgressBar webBrowserProgressBar;
+        private System.Windows.Forms.ToolStripButton webBrowserRefresh_Button;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton webBrowserTextOnly_Button;
     }
 }
 

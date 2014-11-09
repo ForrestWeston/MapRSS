@@ -63,6 +63,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,6 +83,18 @@
       <Project>{a83e29e2-c6eb-4b14-881b-bd16ca8c9759}</Project>
       <Name>Rss</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ForwardButtonImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RefreshButtonImage.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextModeButtonImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
