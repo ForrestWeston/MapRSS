@@ -15,6 +15,7 @@ namespace MapRss
     {
         TreeView m_treeViewTopics;
         TreeView m_treeViewFeeds;
+        DataGridView m_articleDataGridView;
         Rss.Reader rssReader = new Rss.Reader();
 
         public Form1()
@@ -24,6 +25,7 @@ namespace MapRss
 
             m_treeViewTopics = PopulateTopicView();
             m_treeViewFeeds = PopulateFeedView();
+            m_articleDataGridView = PopulateArticleDataGridView();
 
             foreach (TreeNode node in m_treeViewFeeds.Nodes)
             {
@@ -109,41 +111,30 @@ namespace MapRss
 
         }
 
-        private void Build_ArticleDataGridView()
-        {
-            ArticleDataGridView.VirtualMode = true;
-            ArticleDataGridView.AutoSize = true;
-            ArticleDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            ArticleDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ArticleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            ArticleDataGridView.AllowUserToAddRows = false;
-            ArticleDataGridView.AllowUserToDeleteRows = false;
-            DataGridViewCheckBoxColumn CheckBoxColumn = new DataGridViewCheckBoxColumn();
-            {
-                CheckBoxColumn.Name = "Read";
-                CheckBoxColumn.FlatStyle = FlatStyle.Standard;
-                CheckBoxColumn.ThreeState = false;
-                CheckBoxColumn.CellTemplate = new DataGridViewCheckBoxCell();
-                CheckBoxColumn.CellTemplate.Style.BackColor = Color.Beige;
-
-            }
-            ArticleDataGridView.Columns.Insert(0, CheckBoxColumn);
-            ArticleDataGridView.Columns.Add("Title", "Title");
-            ArticleDataGridView.Columns.Add("Description", "Description");
-           
-        
-
-        }
-
+     
         private void treeViewBase_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeView test = sender as TreeView;
+            
+            ArticleDataGridView.Visible = true;
 
             string name = test.SelectedNode.Text;
 
             List<Rss.Article> articles = rssReader.GetArticles(name);
-            Build_ArticleDataGridView();
+            List<Rss.Article> BindList = new List<Rss.Article>();
+            foreach (var article in articles)
+            {
+                BindList.Add(new Rss.Article()
+                {
+                    Title = article.Title.ToString(),
+                    Description = article.Description.ToString(),
+                    Date = article.Date,
+                    Link = article.Link.ToString(),
+                    Location = article.Location.ToString()
 
+                });
+            }
+            m_articleDataGridView.DataSource = BindList;
 
         }
 
@@ -169,6 +160,33 @@ namespace MapRss
             feed.EndUpdate();
             return feed;
         }
+        private DataGridView PopulateArticleDataGridView()
+        {
+            ArticleDataGridView.Visible = false;
+            ArticleDataGridView.VirtualMode = true;
+            ArticleDataGridView.AutoSize = true;
+            ArticleDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            ArticleDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ArticleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            ArticleDataGridView.AllowUserToAddRows = false;
+            ArticleDataGridView.AllowUserToDeleteRows = false;
+            DataGridViewCheckBoxColumn CheckBoxColumn = new DataGridViewCheckBoxColumn();
+            {
+                CheckBoxColumn.Name = "Read";
+                CheckBoxColumn.FlatStyle = FlatStyle.Standard;
+                CheckBoxColumn.ThreeState = false;
+                CheckBoxColumn.CellTemplate = new DataGridViewCheckBoxCell();
+                CheckBoxColumn.CellTemplate.Style.BackColor = Color.Beige;
+                
+
+            }
+            ArticleDataGridView.Columns.Insert(0, CheckBoxColumn);
+            return ArticleDataGridView;
+
+
+
+        }
+
 
         private void AddFeed(string url)
         {
@@ -228,6 +246,8 @@ namespace MapRss
         {
             //TODO: Figure out how to do this...
         }
+
+      
 
    
     }

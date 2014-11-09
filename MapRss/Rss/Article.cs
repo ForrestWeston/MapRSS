@@ -11,10 +11,11 @@ namespace Rss
         #region Properties
 
         public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Link { get; set; }
-        public string Description { get; set; }
         public string Location { get; set; }
+        public bool? Read { get; set; }
 
         #endregion
 
@@ -28,6 +29,7 @@ namespace Rss
             Description = description;
             Location = FindLocation();
         }
+        public Article() { }
 
         #endregion
 
