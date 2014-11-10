@@ -39,10 +39,6 @@ namespace MapRss
 
         }
 
-        public void AddFeed(string url, string name)
-        {
-            m_feeds.Add(name, new Feed(url));
-        }
 
         //This needs to be revised. It is currently functioning this way for testing and needs to get a feed that is specified
         public string GetFeedUrl()

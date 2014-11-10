@@ -34,11 +34,10 @@ C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.Prop
 C:\Users\Kyle\Documents\WSU\CPTS 323\Project\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\MapRss.exe
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\MapRss.pdb
-C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Rss.dll
-C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Rss.pdb
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.csprojResolveAssemblyReference.cache
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.Properties.Resources.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.MainForm.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.CreateUserForm.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.EditUserForm.resources
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.ManageSubscriptionForm.resources
