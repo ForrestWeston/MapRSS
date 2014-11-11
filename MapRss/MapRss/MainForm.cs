@@ -44,11 +44,23 @@ namespace MapRss
         }
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (null != currentUser && null != currentUser.Username)
+            {
+                MessageBox.Show("Logout before logging in as a different user.", "Login-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                currentUser = new User();
+                UserLogin createNewUser = new UserLogin(currentUser);
+                createNewUser.Show();
+                createNewUser.Focus();
+            }
         }
+
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            currentUser.SaveUser();
+            currentUser = new User();
         }
         #endregion
 

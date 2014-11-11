@@ -35,6 +35,20 @@ namespace MapRss
             get { return m_feeds; }
             set { m_feeds = value; }
         }
+
+        public User()
+        {
+
+        }
+
+        public User(string userName, string password)
+        {
+            if(false == LoadUser(userName, password))
+            {
+                throw new Exception("User not found.");
+            }
+        }
+
         public void AddUserFeed(Feed newFeed)
         {
             m_feeds.Add(newFeed);
@@ -66,11 +80,67 @@ namespace MapRss
                 w.WriteStartDocument();
                 //Write starting element and then call the xml writer method in the feed class, then end the 
                 //document
-                w.WriteStartElement(filename);
+                w.WriteStartElement(Username);
+                w.WriteAttributeString("Password", Password);
+                w.WriteAttributeString("Refresh", Refresh.ToString());
+                foreach(Feed feed in m_feeds)
+                {
+                    feed.WriteXml(w);
+                }
+
+                w.WriteEndElement();
+                w.WriteEndDocument();
                 
             }
 
         }
+
+        public bool LoadUser(string userName, string password)
+        {
+            XmlDocument doc = new XmlDocument();
+
+            //Try to load the file
+            try
+            {
+                doc.Load(userName + ".xml");
+            }
+            catch (XmlException)
+            {
+                return false;
+            }
+
+            //Create new diction to add feeds to 
+            MyFeed = new List<Feed>();
+
+            XmlElement root = doc.DocumentElement;
+
+            if (password == root.GetAttribute("Password"))
+            {
+                //Update username/password
+                Username = userName;
+                Password = password;
+                Refresh = int.Parse(root.GetAttribute("Refresh"));
+
+                //This allows for loading multiple feeds
+                foreach (XmlNode feed in root.GetElementsByTagName("Feed"))
+                {
+                    XmlNode name = feed.SelectSingleNode("//Name");
+                    XmlNode url = feed.SelectSingleNode("//Link");
+
+                    if (null != name && null != url)
+                    {
+                        MyFeed.Add(new Feed(url.InnerText, name.InnerText));
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Incorrect password.");
+            }
+
+            return true;
+        }
+
         public void CreateUser()
         {
             if(Username != null)

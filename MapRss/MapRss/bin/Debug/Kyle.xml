@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Kyle Password="test" Refresh="20">
+  <Feed>
+    <Name>USNews</Name>
+    <Title>U.S. News - News</Title>
+    <Description>Get breaking news headlines with the latest news from the US and current world news stories. Read about the US government and economy, the Obama administration, and war in Iraq and Afghanistan.</Description>
+    <Link>http://www.usnews.com/rss/news</Link>
+    <Language>en-us</Language>
+    <PublishDate />
+  </Feed>
+</Kyle>
