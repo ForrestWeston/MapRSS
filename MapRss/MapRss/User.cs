@@ -5,15 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace MapRss
 {
-    public class User
+    public class User : INotifyPropertyChanged
     {
         private string m_username = null;
         private string m_password = null;
         private int m_refresh = 60;//default
-        private List<Feed> m_feeds = new List<Feed>();
+        private ObservableCollection<Feed> m_feeds = new ObservableCollection<Feed>();
+
+        public User()
+        {
+            m_feeds.CollectionChanged += m_feeds_CollectionChanged;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void m_feeds_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var newfeed = sender as ObservableCollection<Feed>;
+            if(e.Action == NotifyCollectionChangedAction.Add)
+            {
+                if (PropertyChanged != null)
+                    PropertyChanged(newfeed.Last(), null);
+            }
+            if(e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public string Username
         {
@@ -30,11 +53,11 @@ namespace MapRss
             get { return m_refresh; }
             set { m_refresh = value; }
         }
-        public List<Feed> MyFeed
+        public ObservableCollection<Feed> Feed
         {
             get { return m_feeds; }
-            set { m_feeds = value; }
         }
+
         public void AddUserFeed(Feed newFeed)
         {
             m_feeds.Add(newFeed);
@@ -43,7 +66,6 @@ namespace MapRss
         {
             m_feeds.Remove(oldFeed);
         }
-
         public void SaveUser()
         {
             if(Username == null)
@@ -105,5 +127,7 @@ namespace MapRss
             userSubscription.Focus();
         }
 
+
+        
     }
 }

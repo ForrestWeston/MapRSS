@@ -14,16 +14,13 @@ namespace MapRss
     public partial class MainForm : Form
     {
         User currentUser;
-        TreeView m_treeViewTopics;
-        TreeView m_treeViewFeeds;
-        DataGridView m_articleGridView;
         Reader m_rssReader = new Reader();
+
+
 
         public MainForm()
         {
             InitializeComponent();
-            m_treeViewFeeds = FeedTreeView;
-            m_treeViewTopics = TopicTreeView;
         }
 
         #region User Manipulation
@@ -32,6 +29,7 @@ namespace MapRss
             User newUser = new User();
             newUser.CreateUser();
             currentUser = newUser;
+            currentUser.PropertyChanged += UpdateTreeView;
 
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,14 +55,11 @@ namespace MapRss
         {
             if(currentUser == null)
             {
-                User tmpUser = new User();
-                tmpUser.AddFeedDialog();
-                currentUser = tmpUser;
+                MessageBox.Show("Please Create an account or Login first", "Login-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 currentUser.AddFeedDialog();
-                UpdateTreeViewFeed();
             }
             //will need to check if topic tab or feed tab is selected and act accordingly 
         }
@@ -73,21 +68,15 @@ namespace MapRss
             throw new NotImplementedException();
             //will need to check if topic tab or feed tab is selected and act accordingly 
         }
-
-        public TreeView CreateTreeView()
+        public void UpdateTreeView(object sender, EventArgs e)
         {
-            TreeView tv = new TreeView();
-            tv.BeginUpdate();
-            tv.EndUpdate();
-            return tv;
+            Feed newFeed = (Feed)sender;
+            FeedTreeView.BeginUpdate();
+            FeedTreeView.Nodes.Add(newFeed.Nickname);
+            FeedTreeView.EndUpdate();
+            FeedTreeView.Refresh();
         }
 
-        public void UpdateTreeViewFeed()
-        {
-            foreach (var feed in currentUser.MyFeed)
-                m_treeViewFeeds.Nodes.Add(new TreeNode(feed.Nickname));
-            
-        }
         #endregion
 
 
