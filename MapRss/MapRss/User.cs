@@ -126,6 +126,14 @@ namespace MapRss
             userSubscription.Show();
             userSubscription.Focus();
         }
+        public List<Article> GetUserArticles(string name)
+        {
+            var userArticles = m_feeds.Single(a => a.Nickname == name);
+            if (userArticles != null)
+                return userArticles.Articles;
+            else
+                return null; //should NEVER HAPPEN how would select an item from the treeview thats not there?
+        }
 
 
         

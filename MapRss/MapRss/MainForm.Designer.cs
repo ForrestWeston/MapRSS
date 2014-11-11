@@ -180,6 +180,7 @@
             this.ArticleDataGridView.Name = "ArticleDataGridView";
             this.ArticleDataGridView.Size = new System.Drawing.Size(532, 117);
             this.ArticleDataGridView.TabIndex = 0;
+            this.ArticleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticleDataGridView_CellContentClick);
             // 
             // FeedTopicTabControl
             // 
@@ -211,6 +212,7 @@
             this.FeedTreeView.Name = "FeedTreeView";
             this.FeedTreeView.Size = new System.Drawing.Size(162, 476);
             this.FeedTreeView.TabIndex = 0;
+            this.FeedTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FeedTreeView_AfterSelect);
             // 
             // TopicTabPage
             // 

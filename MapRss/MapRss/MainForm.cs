@@ -79,6 +79,23 @@ namespace MapRss
 
         #endregion
 
+        private void FeedTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeView currentTreeView = sender as TreeView;
+            string selectedNode = currentTreeView.SelectedNode.Text;
+            List<Article> currentArticles = currentUser.GetUserArticles(selectedNode);
+            ArticleDataGridView.DataSource = currentArticles;
+        }
+
+        private void ArticleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var Grid = sender as DataGridView;
+            string selectedCellLink = Grid.CurrentRow.Cells[3].Value.ToString();
+            WebBrowser.ScriptErrorsSuppressed = true;
+            WebBrowser.Url = new Uri(selectedCellLink);
+            WebBrowser.Refresh();
+        }
+
 
 
 
