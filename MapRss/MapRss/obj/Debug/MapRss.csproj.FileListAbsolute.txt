@@ -41,3 +41,5 @@ C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.CreateUserForm.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.EditUserForm.resources
 C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.ManageSubscriptionForm.resources
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Equin.ApplicationFramework.BindingListView.dll
+C:\Users\Forrest\Source\Repos\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Equin.ApplicationFramework.BindingListView.pdb

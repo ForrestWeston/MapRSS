@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Equin.ApplicationFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -84,51 +85,16 @@ namespace MapRss
         private void FeedTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeView currentTreeView = sender as TreeView;
-            string selectedNode = currentTreeView.SelectedNode.Text;
-            List<Article> currentArticles = currentUser.GetUserArticles(selectedNode);
-            //ArticleDataGridView.DataSource = currentArticles;
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Read", Type.GetType("System.Boolean"));
-            dt.Columns.Add("Title");
-            dt.Columns.Add("Description");
-            dt.Columns.Add("Date");
-            dt.Columns.Add("Link");
-            dt.Columns.Add("Location");
-            DataRow dr;
-            foreach (var article in currentArticles)
+            var curArticles = new BindingListView<Article>(currentUser.GetUserArticles(currentTreeView.SelectedNode.Text));
+            ArticleDataGridView.DataSource = curArticles;
+            for(int i = 0; i < ArticleDataGridView.ColumnCount; i++)
             {
-                dr = dt.NewRow();
-                dr["Read"] = article.Read;
-                dr["Title"] = article.Title.ToString();
-                dr["Description"] = article.Description.ToString();
-                dr["Date"] = article.Date.ToShortDateString();
-                dr["Link"] = article.Link.ToString();
-                dr["Location"] = article.Location.ToString();
-                dt.Rows.Add(dr);
+                ArticleDataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Automatic;
+                ArticleDataGridView.Columns[i].ReadOnly = true;
+                //ArticleDataGridView.Columns[i].DefaultCellStyle.BackColor = Color.Khaki;
             }
-            ArticleDataGridView.DataSource = dt;
-            ArticleDataGridView.AllowUserToAddRows = false;
-            ArticleDataGridView.AllowUserToDeleteRows = false;
-            ArticleDataGridView.DefaultCellStyle.BackColor = Color.Khaki;
-            ArticleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ArticleDataGridView.Columns["Title"].ReadOnly = true;
-            ArticleDataGridView.Columns["Description"].ReadOnly = true;
-            ArticleDataGridView.Columns["Date"].ReadOnly = true;
-            ArticleDataGridView.Columns["Link"].ReadOnly = true;
-            ArticleDataGridView.Columns["Location"].ReadOnly = true;
-            ArticleDataGridView.Columns["Read"].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ArticleDataGridView.Columns["Title"].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ArticleDataGridView.Columns["Description"].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ArticleDataGridView.Columns["Date"].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ArticleDataGridView.Columns["Link"].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ArticleDataGridView.Columns["Location"].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-
-
 
         }
-
         private void ArticleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var Grid = sender as DataGridView;
@@ -139,13 +105,13 @@ namespace MapRss
                 //mark as unread
                 if ((bool)ArticleDataGridView.Rows[e.RowIndex].Cells["Read"].Value)
                 {
-                    Grid.CurrentRow.DefaultCellStyle.BackColor = Color.Khaki;
+                    //Grid.CurrentRow.DefaultCellStyle.BackColor = Color.Khaki;
                     ArticleDataGridView.Rows[e.RowIndex].Cells["Read"].Value = false;
                 }
                 //mark as read
                 else 
                 {
-                    Grid.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                    //Grid.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                     ArticleDataGridView.Rows[e.RowIndex].Cells["Read"].Value = true;
                     WebBrowser.Url = new Uri(Grid.CurrentRow.Cells["Link"].Value.ToString());
                 }
@@ -155,7 +121,7 @@ namespace MapRss
             else
             {
 
-                Grid.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                //Grid.CurrentRow.DefaultCellStyle.BackColor = Color.White;
                 Grid.CurrentRow.Cells["Read"].Value = true;
                 WebBrowser.Url = new Uri(Grid.CurrentRow.Cells["Link"].Value.ToString());
             }
