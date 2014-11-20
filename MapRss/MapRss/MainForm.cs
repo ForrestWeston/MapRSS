@@ -46,11 +46,27 @@ namespace MapRss
         }
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (currentUser != null)//someone is loged in
+                MessageBox.Show("You are already logged in", "Login-error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                User loginUser = new User();
+                loginUser.LoginUser();
+                currentUser = loginUser;
+                currentUser.PropertyChanged += UpdateTreeView;
+            }
+
         }
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (currentUser == null)
+                MessageBox.Show("Cannot logout as you are not logged in", "Login-error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                currentUser.SaveUser();
+                currentUser = null;
+            }
+
         }
         #endregion
 
@@ -76,7 +92,7 @@ namespace MapRss
         {
             Feed newFeed = (Feed)sender;
             FeedTreeView.BeginUpdate();
-            FeedTreeView.Nodes.Add(newFeed.Nickname);
+            FeedTreeView.Nodes.Add(newFeed.Title);
             FeedTreeView.EndUpdate();
             FeedTreeView.Refresh();
         }

@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.ManageUrlLable = new System.Windows.Forms.Label();
-            this.ManageNameLable = new System.Windows.Forms.Label();
             this.ManageTopicLable = new System.Windows.Forms.Label();
             this.ManageURLTextBox = new System.Windows.Forms.TextBox();
-            this.ManageNameTextBox = new System.Windows.Forms.TextBox();
             this.ManageTopicUpDown = new System.Windows.Forms.DomainUpDown();
             this.ManageAcceptButton = new System.Windows.Forms.Button();
             this.ManageCancelButton = new System.Windows.Forms.Button();
@@ -47,19 +45,10 @@
             this.ManageUrlLable.TabIndex = 0;
             this.ManageUrlLable.Text = "URL";
             // 
-            // ManageNameLable
-            // 
-            this.ManageNameLable.AutoSize = true;
-            this.ManageNameLable.Location = new System.Drawing.Point(12, 48);
-            this.ManageNameLable.Name = "ManageNameLable";
-            this.ManageNameLable.Size = new System.Drawing.Size(35, 13);
-            this.ManageNameLable.TabIndex = 1;
-            this.ManageNameLable.Text = "Name";
-            // 
             // ManageTopicLable
             // 
             this.ManageTopicLable.AutoSize = true;
-            this.ManageTopicLable.Location = new System.Drawing.Point(12, 87);
+            this.ManageTopicLable.Location = new System.Drawing.Point(12, 48);
             this.ManageTopicLable.Name = "ManageTopicLable";
             this.ManageTopicLable.Size = new System.Drawing.Size(80, 13);
             this.ManageTopicLable.TabIndex = 2;
@@ -72,16 +61,9 @@
             this.ManageURLTextBox.Size = new System.Drawing.Size(260, 20);
             this.ManageURLTextBox.TabIndex = 3;
             // 
-            // ManageNameTextBox
-            // 
-            this.ManageNameTextBox.Location = new System.Drawing.Point(12, 64);
-            this.ManageNameTextBox.Name = "ManageNameTextBox";
-            this.ManageNameTextBox.Size = new System.Drawing.Size(260, 20);
-            this.ManageNameTextBox.TabIndex = 4;
-            // 
             // ManageTopicUpDown
             // 
-            this.ManageTopicUpDown.Location = new System.Drawing.Point(12, 103);
+            this.ManageTopicUpDown.Location = new System.Drawing.Point(12, 64);
             this.ManageTopicUpDown.Name = "ManageTopicUpDown";
             this.ManageTopicUpDown.Size = new System.Drawing.Size(260, 20);
             this.ManageTopicUpDown.TabIndex = 5;
@@ -114,10 +96,8 @@
             this.Controls.Add(this.ManageCancelButton);
             this.Controls.Add(this.ManageAcceptButton);
             this.Controls.Add(this.ManageTopicUpDown);
-            this.Controls.Add(this.ManageNameTextBox);
             this.Controls.Add(this.ManageURLTextBox);
             this.Controls.Add(this.ManageTopicLable);
-            this.Controls.Add(this.ManageNameLable);
             this.Controls.Add(this.ManageUrlLable);
             this.Name = "ManageSubscriptionForm";
             this.Text = "ManageSubscriptionForm";
@@ -129,10 +109,8 @@
         #endregion
 
         private System.Windows.Forms.Label ManageUrlLable;
-        private System.Windows.Forms.Label ManageNameLable;
         private System.Windows.Forms.Label ManageTopicLable;
         private System.Windows.Forms.TextBox ManageURLTextBox;
-        private System.Windows.Forms.TextBox ManageNameTextBox;
         private System.Windows.Forms.DomainUpDown ManageTopicUpDown;
         private System.Windows.Forms.Button ManageAcceptButton;
         private System.Windows.Forms.Button ManageCancelButton;

@@ -18,7 +18,6 @@ namespace MapRss
 
         #region Properties
 
-        public string Nickname { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Link { get; set; }
@@ -37,9 +36,9 @@ namespace MapRss
         #endregion
         #region Constructors
 
-        public Feed(string RssUrl, string nickname)
+        public Feed(string RssUrl)
         {
-            Nickname = nickname;
+
             //Make sure the string isn't null
             if (null != RssUrl)
             {

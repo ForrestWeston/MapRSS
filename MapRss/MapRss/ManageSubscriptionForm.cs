@@ -23,13 +23,10 @@ namespace MapRss
         {
             if (String.IsNullOrWhiteSpace(ManageURLTextBox.Text))
                 MessageBox.Show("Please Provide a RSS URL", "URL-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (String.IsNullOrWhiteSpace(ManageNameTextBox.Text))
-                MessageBox.Show("Please Provide a name for RSS", "URL-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 string URL = ManageURLTextBox.Text;
-                string nickname = ManageNameTextBox.Text;
-                Feed newFeed = new Feed(URL, nickname);
+                Feed newFeed = new Feed(URL);
                 editUser.AddUserFeed(newFeed);
                 //saveuser
                 Close();

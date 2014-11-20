@@ -8,6 +8,7 @@ using System.Xml;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.IO;
 
 namespace MapRss
 {
@@ -66,6 +67,43 @@ namespace MapRss
         {
             m_feeds.Remove(oldFeed);
         }
+        public bool AuthenticateUser(string username, string password)
+        {
+            XmlDocument doc;
+            FileStream fs;
+            try
+            {
+                fs = new FileStream(username + ".xml", FileMode.Open, FileAccess.Read);
+            }
+            catch(FileNotFoundException)
+            {
+                return false;
+            }
+            doc = new XmlDocument();
+            try
+            {
+                doc.Load(fs);
+            }
+            catch(XmlException)
+            {
+                return false;
+            }
+            XmlElement root = doc.DocumentElement;
+
+            XmlNodeList usrsetting = root.GetElementsByTagName("Username");
+            var usrname = usrsetting.Item(0).InnerText;
+
+            usrsetting = root.GetElementsByTagName("Password");
+            var usrpswrd = usrsetting.Item(0).InnerText;
+
+
+            if (usrname != username || usrpswrd != password)
+            {   
+                return false;
+            }
+            return true;
+
+        }
         public void SaveUser()
         {
             if(Username == null)
@@ -73,25 +111,98 @@ namespace MapRss
                 return;
             }
             string filename = Username + ".xml";
-
-            //Create appropriate settings for Xml file
+            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Encoding = Encoding.UTF8;
             settings.NewLineChars = "\n";
             settings.NewLineOnAttributes = false;
             settings.Indent = true;
 
-            using(XmlWriter w = XmlWriter.Create(filename, settings))
-            {
-                if (w == null) { return; }
+            XmlWriter w = XmlWriter.Create(fs, settings);
+            w.WriteStartDocument();
 
-                w.WriteStartDocument();
-                //Write starting element and then call the xml writer method in the feed class, then end the 
-                //document
-                w.WriteStartElement(filename);
+            w.WriteStartElement(filename);
+
+            w.WriteStartElement("UserSetting");
+
+            w.WriteStartElement("Username");
+            w.WriteValue(Username);
+            w.WriteEndElement();
+
+            w.WriteStartElement("Password");
+            w.WriteValue(Password);
+            w.WriteEndElement();
+
+            w.WriteStartElement("Refresh");
+            w.WriteValue(Refresh);
+            w.WriteEndElement();
+
+            w.WriteEndElement();//end user settings 
+
+            foreach (Feed feed in m_feeds)
+            {
+                w.WriteStartElement("Feed");
+
+                w.WriteStartElement("Title");
+                w.WriteValue(feed.Title);
+                w.WriteEndElement();
+                w.WriteStartElement("Description");
+                w.WriteValue(feed.Description);
+                w.WriteEndElement();
+                w.WriteStartElement("Link");
+                w.WriteValue(feed.Link);
+                w.WriteEndElement();
+                w.WriteStartElement("Language");
+                w.WriteValue(feed.Language);
+                w.WriteEndElement();
+                w.WriteStartElement("PublishDate");
+                w.WriteValue(feed.PublishDate);
+                w.WriteEndElement();
+
+                w.WriteEndElement();//end Feed
+
                 
             }
 
+            w.WriteEndElement();//End Filename
+            w.WriteEndDocument();
+            w.Dispose();
+            
+            
+            
+
+        }
+        public void LoadUser()
+        {
+            if (Username == null)
+                return;
+
+            string filename = Username + ".xml";
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            XmlDocument doc = new XmlDocument();
+
+            try
+            {
+                doc.Load(fs);
+            }
+            catch(XmlException)
+            {
+                return;
+            }
+
+            XmlElement root = doc.DocumentElement;
+            XmlNodeList feeds = root.GetElementsByTagName("Feed");
+            foreach (XmlNode feed in feeds)
+            {
+                XmlNodeList feedAttributes = feed.ChildNodes;
+                string url = feedAttributes.Item(2).InnerText;
+                //XmlNode url = feed.SelectSingleNode("//Link");
+
+                if ( url != null)
+                    Feed.Add(new Feed(url));
+            }
+            
         }
         public void CreateUser()
         {
@@ -104,6 +215,19 @@ namespace MapRss
                 CreateUserForm createNewUser = new CreateUserForm(this);
                 createNewUser.Show();
                 createNewUser.Focus();
+            }
+        }
+        public void LoginUser()
+        {
+            if (Username != null)
+            {
+                MessageBox.Show("Logout before creating new user", "Login-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                LoginUserForm loginUser = new LoginUserForm(this);
+                loginUser.Show();
+                loginUser.Focus();
             }
         }
         public void EditUser()
@@ -128,7 +252,7 @@ namespace MapRss
         }
         public List<Article> GetUserArticles(string name)
         {
-            var userArticles = m_feeds.Single(a => a.Nickname == name);
+            var userArticles = m_feeds.Single(a => a.Title == name);
             if (userArticles != null)
                 return userArticles.Articles;
             else
