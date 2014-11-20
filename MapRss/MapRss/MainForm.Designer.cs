@@ -39,7 +39,6 @@
             this.BrowserTabPage = new System.Windows.Forms.TabPage();
             this.WebBrowser = new System.Windows.Forms.WebBrowser();
             this.MapTabPage = new System.Windows.Forms.TabPage();
-            this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.FeedTopicTabControl = new System.Windows.Forms.TabControl();
             this.FeedTabPage = new System.Windows.Forms.TabPage();
             this.FeedTreeView = new System.Windows.Forms.TreeView();
@@ -47,6 +46,7 @@
             this.TopicTreeView = new System.Windows.Forms.TreeView();
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
+            this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabGridViewsplitContainer)).BeginInit();
             this.TabGridViewsplitContainer.Panel1.SuspendLayout();
@@ -54,10 +54,10 @@
             this.TabGridViewsplitContainer.SuspendLayout();
             this.BrowserMapTabControl.SuspendLayout();
             this.BrowserTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.FeedTopicTabControl.SuspendLayout();
             this.FeedTabPage.SuspendLayout();
             this.TopicTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -172,16 +172,6 @@
             this.MapTabPage.Text = "Map";
             this.MapTabPage.UseVisualStyleBackColor = true;
             // 
-            // ArticleDataGridView
-            // 
-            this.ArticleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ArticleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ArticleDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.ArticleDataGridView.Name = "ArticleDataGridView";
-            this.ArticleDataGridView.Size = new System.Drawing.Size(532, 117);
-            this.ArticleDataGridView.TabIndex = 0;
-            this.ArticleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticleDataGridView_CellContentClick);
-            // 
             // FeedTopicTabControl
             // 
             this.FeedTopicTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -253,6 +243,23 @@
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
+            // ArticleDataGridView
+            // 
+            this.ArticleDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.ArticleDataGridView.AllowUserToAddRows = false;
+            this.ArticleDataGridView.AllowUserToDeleteRows = false;
+            this.ArticleDataGridView.AllowUserToResizeRows = false;
+            this.ArticleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ArticleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ArticleDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArticleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ArticleDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.ArticleDataGridView.MultiSelect = false;
+            this.ArticleDataGridView.Name = "ArticleDataGridView";
+            this.ArticleDataGridView.Size = new System.Drawing.Size(532, 117);
+            this.ArticleDataGridView.TabIndex = 0;
+            this.ArticleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticleDataGridView_CellContentClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,10 +281,10 @@
             this.TabGridViewsplitContainer.ResumeLayout(false);
             this.BrowserMapTabControl.ResumeLayout(false);
             this.BrowserTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.FeedTopicTabControl.ResumeLayout(false);
             this.FeedTabPage.ResumeLayout(false);
             this.TopicTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,7 +302,6 @@
         private System.Windows.Forms.TabControl BrowserMapTabControl;
         private System.Windows.Forms.TabPage BrowserTabPage;
         private System.Windows.Forms.TabPage MapTabPage;
-        private System.Windows.Forms.DataGridView ArticleDataGridView;
         private System.Windows.Forms.TabControl FeedTopicTabControl;
         private System.Windows.Forms.TabPage FeedTabPage;
         private System.Windows.Forms.TabPage TopicTabPage;
@@ -304,6 +310,7 @@
         private System.Windows.Forms.WebBrowser WebBrowser;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.DataGridView ArticleDataGridView;
 
     }
 }

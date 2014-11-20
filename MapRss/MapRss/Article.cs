@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MapRss
 {
@@ -15,19 +16,21 @@ namespace MapRss
         public DateTime Date { get; set; }
         public string Link { get; set; }
         public string Location { get; set; }
-        public bool? Read { get; set; }
+        public bool Read { get; set; }
 
         #endregion
 
         #region Constructors
 
-        public Article(string title, DateTime date, string link, string description)
+        public Article(string title, DateTime date, string link, string description, bool read=false)
         {
+            string noHTML = Regex.Replace(description, @"<[^>]+>|&nbsp;", "").Trim();
             Title = title;
             Date = date;
             Link = link;
-            Description = description;
+            Description = Regex.Replace(noHTML, @"\s{2,}", " ");
             Location = FindLocation();
+            Read = read;
         }
         public Article() { }
 
