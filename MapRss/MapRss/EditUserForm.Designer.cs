@@ -152,7 +152,7 @@
             0,
             0});
             this.EditRefreshRatenumericUpDown.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});

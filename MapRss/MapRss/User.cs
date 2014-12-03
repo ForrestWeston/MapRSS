@@ -18,10 +18,22 @@ namespace MapRss
         private string m_password = null;
         private int m_refresh = 60;//default
         private ObservableCollection<Feed> m_feeds = new ObservableCollection<Feed>();
+        private static System.Timers.Timer updateTimer;
 
         public User()
         {
             m_feeds.CollectionChanged += m_feeds_CollectionChanged;
+            updateTimer = new System.Timers.Timer();    //init new timer var to update user feeds
+            updateTimer.Elapsed += updateTimer_Elapsed; //event that is called when the interval elapses         
+            updateTimer.Interval = Refresh * 60 * 1000; //refresh is specified in min so this conversion is made: Refresh * 60 * 1000
+            updateTimer.Start();
+ 
+        }
+
+        void updateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            foreach (var f in Feed)
+                f.Update();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

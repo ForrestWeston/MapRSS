@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Timers;
 
 namespace MapRss
 {
@@ -30,9 +31,10 @@ namespace MapRss
         private XmlNode NodeRss { get; set; }
         private XmlNode NodeChannel { get; set; }
         private XmlNode NodeItem { get; set; }
-        private ListViewItem RowNews { get; set; }
 
+       
 
+        
         #endregion
         #region Constructors
 
@@ -88,6 +90,51 @@ namespace MapRss
         }
 
         #endregion
+
+        public void Update()
+        {
+            Articles.Clear();
+            //FW: Create new XmlTextReader from the provided RssUrl i.e the rss feed
+            RssReader = new XmlTextReader(this.Link);
+            RssDocument = new XmlDocument();
+
+            //FW: populate the XmlDocument 
+            RssDocument.Load(RssReader);
+
+            //FW: loop through all rss tags in RssDocument and create 'rss' nodes for them 
+            for (var i = 0; i < RssDocument.ChildNodes.Count; i++)
+                if (RssDocument.ChildNodes[i].Name == "rss")
+                    NodeRss = RssDocument.ChildNodes[i];
+
+            //FW: loop through all channel tags in NodeRss and create 'channel' nodes for them 
+            for (var i = 0; i < NodeRss.ChildNodes.Count; i++)
+                if (NodeRss.ChildNodes[i].Name == "channel")
+                    NodeChannel = NodeRss.ChildNodes[i];
+
+            //FW: These are required (i think), so this should never throw null exception, but lets check anyways
+            var titleElement = NodeChannel["title"];
+            if (titleElement != null) Title = titleElement.InnerText;
+
+            var descElement = NodeChannel["description"];
+            if (descElement != null) Description = descElement.InnerText;
+
+            var langElement = NodeChannel["language"];
+            if (langElement != null) Language = langElement.InnerText;
+
+            if (null != NodeChannel["item"])
+            {
+                //Get all articles
+                foreach (XmlNode item in RssDocument.SelectNodes("//channel/item"))
+                {
+                    string title = item.SelectSingleNode("title").InnerText;
+                    DateTime date = DateTime.Parse(item.SelectSingleNode("pubDate").InnerText);
+                    string link = item.SelectSingleNode("link").InnerText;
+                    string description = item.SelectSingleNode("description").InnerText;
+
+                    Articles.Add(new Article(title, date, link, description));
+                }
+            }
+        }
     }
 
 }
