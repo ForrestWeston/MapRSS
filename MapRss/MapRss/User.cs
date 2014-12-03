@@ -77,6 +77,7 @@ namespace MapRss
             }
             catch(FileNotFoundException)
             {
+
                 return false;
             }
             doc = new XmlDocument();
@@ -86,6 +87,7 @@ namespace MapRss
             }
             catch(XmlException)
             {
+                fs.Close();
                 return false;
             }
             XmlElement root = doc.DocumentElement;
@@ -98,9 +100,11 @@ namespace MapRss
 
 
             if (usrname != username || usrpswrd != password)
-            {   
+            {
+                fs.Close();
                 return false;
             }
+            fs.Close();
             return true;
 
         }
@@ -167,6 +171,7 @@ namespace MapRss
             w.WriteEndElement();//End Filename
             w.WriteEndDocument();
             w.Dispose();
+            fs.Close();
             
             
             
@@ -202,7 +207,8 @@ namespace MapRss
                 if ( url != null)
                     Feed.Add(new Feed(url));
             }
-            
+            fs.Close();
+
         }
         public void CreateUser()
         {

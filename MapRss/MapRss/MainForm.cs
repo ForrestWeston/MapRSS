@@ -34,6 +34,8 @@ namespace MapRss
             newUser.CreateUser();
             currentUser = newUser;
             currentUser.PropertyChanged += UpdateTreeView;
+            
+            
 
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,8 +65,13 @@ namespace MapRss
                 MessageBox.Show("Cannot logout as you are not logged in", "Login-error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                currentUser.SaveUser();
-                currentUser = null;
+                //clear all the forms to initial values 
+                this.currentUser.SaveUser();
+                this.currentUser = null;
+                this.FeedTreeView.Nodes.Clear();
+                this.ArticleDataGridView.DataSource = null;
+                this.ArticleDataGridView.Rows.Clear();
+                this.WebBrowser.Navigate("about:blank");
             }
 
         }
