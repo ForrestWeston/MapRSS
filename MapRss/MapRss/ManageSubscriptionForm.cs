@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Equin.ApplicationFramework;
 
 namespace MapRss
 {
@@ -17,9 +18,18 @@ namespace MapRss
         {
             editUser = user;
             InitializeComponent();
+            DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
+            SubscriptionDataGridView.Columns.Add(chk);
+            chk.HeaderText = "Select";
+            chk.Name = "chk";
+            SubscriptionDataGridView.DataSource = new BindingListView<Feed>(editUser.Feed);
         }
 
         private void ManageAcceptButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void ManageFeedAddButton_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(ManageURLTextBox.Text))
                 MessageBox.Show("Please Provide a RSS URL", "URL-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -28,15 +38,28 @@ namespace MapRss
                 string URL = ManageURLTextBox.Text;
                 Feed newFeed = new Feed(URL);
                 editUser.AddUserFeed(newFeed);
-                //saveuser
-                Close();
-                
+                SubscriptionDataGridView.DataSource = new BindingListView<Feed>(editUser.Feed);
+                ManageURLTextBox.Text = String.Empty;
+                ManageURLTextBox.Focus();
             }
-                
         }
-        private void ManageCancelButton_Click(object sender, EventArgs e)
+
+        private void ManageDeleteFeedButton_Click(object sender, EventArgs e)
         {
-            Close();
+            int i = 0;
+            List<Feed> feedsToDelete = new List<Feed>();
+            foreach (DataGridViewRow item in SubscriptionDataGridView.Rows)
+            {
+                bool IsBool = false;
+                bool.TryParse(item.Cells[0].EditedFormattedValue.ToString(), out IsBool);
+                if (IsBool) //<--Where: The ColumnIndex of the DataGridViewCheckBoxCell
+                {
+                    feedsToDelete.Add(editUser.Feed.ElementAt(i));
+                }
+                i++;
+            }
+            editUser.RemoveUserFeed(feedsToDelete);
+            SubscriptionDataGridView.DataSource = new BindingListView<Feed>(editUser.Feed);
         }
 
 

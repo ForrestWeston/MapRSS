@@ -30,27 +30,34 @@ namespace MapRss
  
         }
 
+       
+        //events and their properties 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void m_feeds_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            
+            if(e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var newfeed = sender as ObservableCollection<Feed>;
+                if (PropertyChanged != null)
+                    PropertyChanged(newfeed.Last(), null);
+            }
+            if(e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                if (PropertyChanged != null)
+                {
+                    var tmp = e.OldItems;
+                    PropertyChanged(tmp, null);
+                }
+            }
+        }
         void updateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             foreach (var f in Feed)
                 f.Update();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void m_feeds_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            var newfeed = sender as ObservableCollection<Feed>;
-            if(e.Action == NotifyCollectionChangedAction.Add)
-            {
-                if (PropertyChanged != null)
-                    PropertyChanged(newfeed.Last(), null);
-            }
-            if(e.Action == NotifyCollectionChangedAction.Remove)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        //getters and setters
         public string Username
         {
             get { return m_username; }
@@ -71,6 +78,7 @@ namespace MapRss
             get { return m_feeds; }
         }
 
+        //user functions 
         public void AddUserFeed(Feed newFeed)
         {
             m_feeds.Add(newFeed);
@@ -268,6 +276,15 @@ namespace MapRss
             userSubscription.Show();
             userSubscription.Focus();
         }
+        public void RemoveFeedDialog()
+        {
+            if (Username == null)
+                MessageBox.Show("Must login to save changes", "Login-Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            ManageSubscriptionForm userSubscription = new ManageSubscriptionForm(this);
+            userSubscription.Show();
+            userSubscription.Focus();
+        }
         public List<Article> GetUserArticles(string name)
         {
             var userArticles = m_feeds.Single(a => a.Title == name);
@@ -278,6 +295,14 @@ namespace MapRss
         }
 
 
-        
+
+
+        internal void RemoveUserFeed(List<Feed> feedsToDelete)
+        {
+            foreach (Feed f in feedsToDelete)
+            {
+                m_feeds.Remove(f);
+            }
+        }
     }
 }

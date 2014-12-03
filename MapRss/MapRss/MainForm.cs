@@ -28,6 +28,7 @@ namespace MapRss
         }
 
         #region User Manipulation
+
         private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             User newUser = new User();
@@ -57,6 +58,7 @@ namespace MapRss
                 currentUser = loginUser;
                 currentUser.PropertyChanged += UpdateTreeView;
             }
+            
 
         }
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,9 +77,11 @@ namespace MapRss
             }
 
         }
+
         #endregion
 
         #region Feed/Topic Manipulation
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             if(currentUser == null)
@@ -90,19 +94,29 @@ namespace MapRss
             }
             //will need to check if topic tab or feed tab is selected and act accordingly 
         }
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-            //will need to check if topic tab or feed tab is selected and act accordingly 
-        }
         public void UpdateTreeView(object sender, EventArgs e)
         {
-            Feed newFeed = (Feed)sender;
-            FeedTreeView.BeginUpdate();
-            FeedTreeView.Nodes.Add(newFeed.Title);
-            FeedTreeView.EndUpdate();
-            FeedTreeView.Refresh();
+            //user is addeding a Feed
+            if(sender.GetType() == typeof(Feed))
+            {
+                Feed newFeed = (Feed)sender;
+                FeedTreeView.BeginUpdate();
+                FeedTreeView.Nodes.Add(newFeed.Link, newFeed.Title);
+                FeedTreeView.EndUpdate();
+                FeedTreeView.Refresh();
+            }
+            //user is deleting a feed
+            else
+            {
+                System.Collections.IList oldFeeds = sender as System.Collections.IList;
+                FeedTreeView.BeginUpdate();
+                foreach (Feed item in oldFeeds)
+                    FeedTreeView.Nodes.RemoveByKey(item.Link);
+                FeedTreeView.EndUpdate();
+                FeedTreeView.Refresh();
+            }           
         }
+
         #endregion
 
         private void FeedTreeView_AfterSelect(object sender, TreeViewEventArgs e)

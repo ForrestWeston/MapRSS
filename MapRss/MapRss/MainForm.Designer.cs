@@ -39,14 +39,13 @@
             this.BrowserTabPage = new System.Windows.Forms.TabPage();
             this.WebBrowser = new System.Windows.Forms.WebBrowser();
             this.MapTabPage = new System.Windows.Forms.TabPage();
+            this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.FeedTopicTabControl = new System.Windows.Forms.TabControl();
             this.FeedTabPage = new System.Windows.Forms.TabPage();
             this.FeedTreeView = new System.Windows.Forms.TreeView();
             this.TopicTabPage = new System.Windows.Forms.TabPage();
             this.TopicTreeView = new System.Windows.Forms.TreeView();
             this.AddButton = new System.Windows.Forms.Button();
-            this.RemoveButton = new System.Windows.Forms.Button();
-            this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabGridViewsplitContainer)).BeginInit();
             this.TabGridViewsplitContainer.Panel1.SuspendLayout();
@@ -54,10 +53,10 @@
             this.TabGridViewsplitContainer.SuspendLayout();
             this.BrowserMapTabControl.SuspendLayout();
             this.BrowserTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.FeedTopicTabControl.SuspendLayout();
             this.FeedTabPage.SuspendLayout();
             this.TopicTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -172,6 +171,23 @@
             this.MapTabPage.Text = "Map";
             this.MapTabPage.UseVisualStyleBackColor = true;
             // 
+            // ArticleDataGridView
+            // 
+            this.ArticleDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.ArticleDataGridView.AllowUserToAddRows = false;
+            this.ArticleDataGridView.AllowUserToDeleteRows = false;
+            this.ArticleDataGridView.AllowUserToResizeRows = false;
+            this.ArticleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ArticleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ArticleDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArticleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ArticleDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.ArticleDataGridView.MultiSelect = false;
+            this.ArticleDataGridView.Name = "ArticleDataGridView";
+            this.ArticleDataGridView.Size = new System.Drawing.Size(532, 117);
+            this.ArticleDataGridView.TabIndex = 0;
+            this.ArticleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticleDataGridView_CellContentClick);
+            // 
             // FeedTopicTabControl
             // 
             this.FeedTopicTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -227,45 +243,17 @@
             // 
             this.AddButton.Location = new System.Drawing.Point(13, 27);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(25, 25);
+            this.AddButton.Size = new System.Drawing.Size(86, 25);
             this.AddButton.TabIndex = 4;
-            this.AddButton.Text = "+";
+            this.AddButton.Text = "Manage";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // RemoveButton
-            // 
-            this.RemoveButton.Location = new System.Drawing.Point(44, 27);
-            this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(25, 25);
-            this.RemoveButton.TabIndex = 5;
-            this.RemoveButton.Text = "-";
-            this.RemoveButton.UseVisualStyleBackColor = true;
-            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
-            // 
-            // ArticleDataGridView
-            // 
-            this.ArticleDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.ArticleDataGridView.AllowUserToAddRows = false;
-            this.ArticleDataGridView.AllowUserToDeleteRows = false;
-            this.ArticleDataGridView.AllowUserToResizeRows = false;
-            this.ArticleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ArticleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ArticleDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArticleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ArticleDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.ArticleDataGridView.MultiSelect = false;
-            this.ArticleDataGridView.Name = "ArticleDataGridView";
-            this.ArticleDataGridView.Size = new System.Drawing.Size(532, 117);
-            this.ArticleDataGridView.TabIndex = 0;
-            this.ArticleDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArticleDataGridView_CellContentClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 573);
-            this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.FeedTopicTabControl);
             this.Controls.Add(this.TabGridViewsplitContainer);
@@ -281,10 +269,10 @@
             this.TabGridViewsplitContainer.ResumeLayout(false);
             this.BrowserMapTabControl.ResumeLayout(false);
             this.BrowserTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.FeedTopicTabControl.ResumeLayout(false);
             this.FeedTabPage.ResumeLayout(false);
             this.TopicTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,7 +297,6 @@
         private System.Windows.Forms.TreeView TopicTreeView;
         private System.Windows.Forms.WebBrowser WebBrowser;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.DataGridView ArticleDataGridView;
 
     }
