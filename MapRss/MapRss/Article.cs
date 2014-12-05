@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-
+using System.IO;
 namespace MapRss
 {
     public class Article
@@ -41,7 +41,49 @@ namespace MapRss
 
         private string FindLocation()
         {
-            return String.Empty;
+            String location;
+            string filePath = "../../Resources/uslocations.csv";
+            StreamReader sr = new StreamReader(filePath);
+            var lines = new List<string[]>();
+            int Row = 0;
+            while (!sr.EndOfStream)
+            {
+                string[] Line = sr.ReadLine().Split(',');
+                lines.Add(Line);
+                Row++;
+            }
+            int i = 1;
+            string city = null;
+            string state = null;
+            while (i < Row)
+            {
+                if (this.Description.Contains(lines[i][3]) || this.Title.Contains(lines[i][3]))
+                {
+                    city = lines[i][3];
+                    state = lines[i][2];
+                    break;
+                }
+
+                if (this.Description.Contains(lines[i][2]) || this.Title.Contains(lines[i][2]))
+                {
+                    state = lines[i][2];
+                    city = lines[i][3];
+                    break;
+                }
+                i++;
+            }
+            //create location string
+            if (city != null)
+            {
+                string m_location = city + ", " + state;
+                return m_location;
+            }
+            else
+            {
+                return String.Empty;
+            }
+
+
         }
 
         #endregion

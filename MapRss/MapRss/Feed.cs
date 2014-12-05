@@ -79,7 +79,9 @@ namespace MapRss
                     foreach (XmlNode item in RssDocument.SelectNodes("//channel/item"))
                     {                        
                         string title = item.SelectSingleNode("title").InnerText;
-                        DateTime date = DateTime.Parse(item.SelectSingleNode("pubDate").InnerText);
+                        string datestr = item.SelectSingleNode("pubDate").InnerText;
+                        datestr = datestr.Remove(datestr.IndexOf(" PST"));
+                        DateTime date = DateTime.Parse(datestr);
                         string link = item.SelectSingleNode("link").InnerText;
                         string description = item.SelectSingleNode("description").InnerText;
 
@@ -127,6 +129,8 @@ namespace MapRss
                 foreach (XmlNode item in RssDocument.SelectNodes("//channel/item"))
                 {
                     string title = item.SelectSingleNode("title").InnerText;
+                    string datestr = item.SelectSingleNode("pubDate").InnerText;
+                    datestr = datestr.Remove(datestr.IndexOf(" PST"));
                     DateTime date = DateTime.Parse(item.SelectSingleNode("pubDate").InnerText);
                     string link = item.SelectSingleNode("link").InnerText;
                     string description = item.SelectSingleNode("description").InnerText;
