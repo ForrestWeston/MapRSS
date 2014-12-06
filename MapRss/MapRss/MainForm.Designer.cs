@@ -46,6 +46,8 @@
             this.TopicTabPage = new System.Windows.Forms.TabPage();
             this.TopicTreeView = new System.Windows.Forms.TreeView();
             this.AddButton = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.mapControl1 = new MapRss.MapControl();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabGridViewsplitContainer)).BeginInit();
             this.TabGridViewsplitContainer.Panel1.SuspendLayout();
@@ -53,6 +55,7 @@
             this.TabGridViewsplitContainer.SuspendLayout();
             this.BrowserMapTabControl.SuspendLayout();
             this.BrowserTabPage.SuspendLayout();
+            this.MapTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).BeginInit();
             this.FeedTopicTabControl.SuspendLayout();
             this.FeedTabPage.SuspendLayout();
@@ -163,6 +166,7 @@
             // 
             // MapTabPage
             // 
+            this.MapTabPage.Controls.Add(this.elementHost1);
             this.MapTabPage.Location = new System.Drawing.Point(4, 22);
             this.MapTabPage.Name = "MapTabPage";
             this.MapTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -249,6 +253,17 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(3, 3);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(518, 355);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.elementHost1_ChildChanged);
+            this.elementHost1.Child = this.mapControl1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +284,7 @@
             this.TabGridViewsplitContainer.ResumeLayout(false);
             this.BrowserMapTabControl.ResumeLayout(false);
             this.BrowserTabPage.ResumeLayout(false);
+            this.MapTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ArticleDataGridView)).EndInit();
             this.FeedTopicTabControl.ResumeLayout(false);
             this.FeedTabPage.ResumeLayout(false);
@@ -298,6 +314,8 @@
         private System.Windows.Forms.WebBrowser WebBrowser;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.DataGridView ArticleDataGridView;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private MapControl mapControl1;
 
     }
 }

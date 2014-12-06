@@ -59,3 +59,9 @@ C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Deb
 C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.Properties.Resources.resources
 C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.CreateUserForm.resources
 C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.csproj.GenerateResource.Cache
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapControl.baml
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapControl.g.cs
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss_MarkupCompile.cache
+C:\Users\Sidney\323Project\Rep_TeamAbstractingAbstractions\MapRss\MapRss\obj\Debug\MapRss.g.resources

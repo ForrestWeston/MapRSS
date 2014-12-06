@@ -24,7 +24,6 @@ namespace MapRss
             InitializeComponent();
             WebBrowser.ScriptErrorsSuppressed = true;
             
-            
         }
 
         #region User Manipulation
@@ -165,6 +164,11 @@ namespace MapRss
 
 
            
+        }
+
+        private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
         }
 
 
