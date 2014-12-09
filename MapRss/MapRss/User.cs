@@ -18,16 +18,41 @@ namespace MapRss
         private string m_password = null;
         private int m_refresh = 60;//default
         private ObservableCollection<Feed> m_feeds = new ObservableCollection<Feed>();
+        private ObservableCollection<Topic> m_topics = new ObservableCollection<Topic>();
         private static System.Timers.Timer updateTimer;
 
         public User()
         {
             m_feeds.CollectionChanged += m_feeds_CollectionChanged;
+            m_topics.CollectionChanged += m_topics_CollectionChanged;
             updateTimer = new System.Timers.Timer();    //init new timer var to update user feeds
             updateTimer.Elapsed += updateTimer_Elapsed; //event that is called when the interval elapses         
             updateTimer.Interval = Refresh * 60 * 1000; //refresh is specified in min so this conversion is made: Refresh * 60 * 1000
             updateTimer.Start();
  
+        }
+
+        //Topic event and flag
+        public event PropertyChangedEventHandler TopicChanged;
+
+        void m_topics_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                ObservableCollection<Topic> newTopic = sender as ObservableCollection<Topic>;
+                if (TopicChanged != null)
+                {
+                    TopicChanged(newTopic.Last(), null);
+                }
+            }
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                if (TopicChanged != null)
+                {
+                    var tmp = e.OldItems;
+                    TopicChanged(tmp, null);
+                }
+            }
         }
 
        
@@ -46,8 +71,8 @@ namespace MapRss
             {
                 if (PropertyChanged != null)
                 {
-                    var tmp = e.OldItems;
-                    PropertyChanged(tmp, null);
+                    IList<Topic> delete = e.OldItems as IList<Topic>;
+                    PropertyChanged(delete, null);
                 }
             }
         }
@@ -87,6 +112,24 @@ namespace MapRss
         {
             m_feeds.Remove(oldFeed);
         }
+
+        public void AddTopic(Topic topic)
+        {
+            m_topics.Add(topic);
+        }
+
+        public void RemoveTopic(Topic topic)
+        {
+            m_topics.Remove(topic);
+        }
+
+        public Topic GetTopic(string name)
+        {
+            Topic topic = m_topics.Where(t => t.Name == name).FirstOrDefault();
+
+            return topic;
+        }
+
         public bool AuthenticateUser(string username, string password)
         {
             XmlDocument doc;
@@ -276,6 +319,17 @@ namespace MapRss
             userSubscription.Show();
             userSubscription.Focus();
         }
+
+        public void AddTopicDialog()
+        {
+            if (Username == null)
+                MessageBox.Show("Must login to save changes", "Login-Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            ManageTopicForm userTopics = new ManageTopicForm(this);
+            userTopics.Show();
+            userTopics.Focus();
+        }
+
         public void RemoveFeedDialog()
         {
             if (Username == null)

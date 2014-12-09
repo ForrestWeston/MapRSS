@@ -89,7 +89,14 @@ namespace MapRss
             }
             else
             {
-                currentUser.AddFeedDialog();
+                if(0 == FeedTopicTabControl.SelectedIndex)
+                {
+                    currentUser.AddFeedDialog();
+                }
+                else if (1 == FeedTopicTabControl.SelectedIndex)
+                {
+                    currentUser.AddTopicDialog();
+                }              
             }
             //will need to check if topic tab or feed tab is selected and act accordingly 
         }
