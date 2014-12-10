@@ -103,6 +103,11 @@ namespace MapRss
             get { return m_feeds; }
         }
 
+        public ObservableCollection<Topic> Topic
+        {
+            get { return m_topics; }
+        }
+
         //user functions 
         public void AddUserFeed(Feed newFeed)
         {
@@ -226,19 +231,31 @@ namespace MapRss
                 w.WriteValue(feed.PublishDate);
                 w.WriteEndElement();
 
-                w.WriteEndElement();//end Feed
+                w.WriteEndElement();//end Feed             
+            }
 
-                
+            foreach (Topic topic in m_topics)
+            {
+                w.WriteStartElement("Topic");
+
+                w.WriteStartElement("Name");
+                w.WriteValue(topic.Name);
+                w.WriteEndElement();
+
+                foreach(string keyword in topic.Keyword)
+                {
+                    w.WriteStartElement("Keyword");
+                    w.WriteValue(keyword);
+                    w.WriteEndElement();
+                }
+
+                w.WriteEndElement();//end Feed             
             }
 
             w.WriteEndElement();//End Filename
             w.WriteEndDocument();
             w.Dispose();
-            fs.Close();
-            
-            
-            
-
+            fs.Close();           
         }
         public void LoadUser()
         {
@@ -270,6 +287,30 @@ namespace MapRss
                 if ( url != null)
                     Feed.Add(new Feed(url));
             }
+
+            XmlNodeList topics = root.GetElementsByTagName("Topic");
+            foreach(XmlNode topic in topics)
+            {
+                XmlNodeList topicAttributes = topic.ChildNodes;
+
+                //A topic might exist with no keywords or have keywords, so both situations need to load              
+                if(0 < topicAttributes.Count)
+                {
+                    //Had to use the namespace due to a property name conflict
+                    MapRss.Topic topicAdd = new MapRss.Topic(topicAttributes.Item(0).InnerText);
+
+                    if(1 < topicAttributes.Count)
+                    {
+                        for(int i = 1; i < topicAttributes.Count; i++)
+                        {
+                            topicAdd.Keyword.Add(topicAttributes.Item(i).InnerText);
+                        }
+                    }
+
+                    Topic.Add(topicAdd);
+                }
+            }
+
             fs.Close();
 
         }

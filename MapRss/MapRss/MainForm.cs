@@ -17,8 +17,6 @@ namespace MapRss
         User currentUser;
         Reader m_rssReader = new Reader();
 
-
-
         public MainForm()
         {
             InitializeComponent();
@@ -56,10 +54,11 @@ namespace MapRss
                 loginUser.LoginUser();
                 currentUser = loginUser;
                 currentUser.PropertyChanged += UpdateTreeView;
+                currentUser.TopicChanged += currentUser_TopicChanged;
             }
-            
-
+           
         }
+
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (currentUser == null)
@@ -70,6 +69,7 @@ namespace MapRss
                 this.currentUser.SaveUser();
                 this.currentUser = null;
                 this.FeedTreeView.Nodes.Clear();
+                this.TopicTreeView.Nodes.Clear();
                 this.ArticleDataGridView.DataSource = null;
                 this.ArticleDataGridView.Rows.Clear();
                 this.WebBrowser.Navigate("about:blank");
@@ -178,12 +178,69 @@ namespace MapRss
 
         }
 
+        void currentUser_TopicChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //Add/remove topic to/from view
+            if (sender.GetType() == typeof(Topic))
+            {
+                Topic topic = sender as Topic;
+                TopicTreeView.BeginUpdate();
+                TopicTreeView.Nodes.Add(topic.Name, topic.Name);
+                TopicTreeView.EndUpdate();
+                TopicTreeView.Refresh();
+            }
+            else
+            {
+                System.Collections.IList topics = sender as System.Collections.IList;
+                TopicTreeView.BeginUpdate();
 
+                foreach (Topic topic in topics)
+                {
+                    TopicTreeView.Nodes.RemoveByKey(topic.Name);
+                }
+                    
+                TopicTreeView.EndUpdate();
+                TopicTreeView.Refresh();
+            }  
+        }
 
+        private void TopicTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeView currentTreeView = sender as TreeView;
+            string topicName = currentTreeView.SelectedNode.Text;
 
+            //A hash set is being used to guarentee unique articles
+            HashSet<Article> articles = new HashSet<Article>();
 
+            Topic topic = currentUser.GetTopic(topicName);
 
+            foreach(string keyword in topic.Keyword)
+            {
+                foreach(Feed feed in currentUser.Feed)
+                {
+                    List<Article> matchFound = feed.Articles.Where(f => f.Title.ToLower().Contains(keyword.ToLower()) || f.Description.ToLower().Contains(keyword.ToLower())).ToList();
 
+                    if(null != matchFound)
+                    {
+                        foreach(Article article in matchFound)
+                        {
+                            articles.Add(article);
+                        }
+                    }
+                }            
+            }
 
+            //All matching articles have been found, now sort
+            List<Article> articlesDisplay = articles.OrderByDescending(a => a.Date).ToList();
+
+            //Display articles
+            var curArticles = new BindingListView<Article>(articlesDisplay);
+            ArticleDataGridView.DataSource = curArticles;
+            for (int i = 0; i < ArticleDataGridView.ColumnCount; i++)
+            {
+                ArticleDataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.Automatic;
+                ArticleDataGridView.Columns[i].ReadOnly = true;
+            }
+        }
     }
 }

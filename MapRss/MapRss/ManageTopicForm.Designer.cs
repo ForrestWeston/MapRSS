@@ -40,12 +40,13 @@
             this.buttonDeleteKeywords = new System.Windows.Forms.Button();
             this.checkedListBoxKeywords = new System.Windows.Forms.CheckedListBox();
             this.buttonAddKeyword = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonDone
             // 
-            this.buttonDone.Location = new System.Drawing.Point(15, 540);
+            this.buttonDone.Location = new System.Drawing.Point(15, 492);
             this.buttonDone.Name = "buttonDone";
             this.buttonDone.Size = new System.Drawing.Size(75, 23);
             this.buttonDone.TabIndex = 0;
@@ -56,9 +57,9 @@
             // comboBoxTopics
             // 
             this.comboBoxTopics.FormattingEnabled = true;
-            this.comboBoxTopics.Location = new System.Drawing.Point(15, 97);
+            this.comboBoxTopics.Location = new System.Drawing.Point(154, 90);
             this.comboBoxTopics.Name = "comboBoxTopics";
-            this.comboBoxTopics.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTopics.Size = new System.Drawing.Size(206, 21);
             this.comboBoxTopics.TabIndex = 1;
             this.comboBoxTopics.SelectedIndexChanged += new System.EventHandler(this.selectedIndex_Changed);
             // 
@@ -91,7 +92,7 @@
             // labelKeyword
             // 
             this.labelKeyword.AutoSize = true;
-            this.labelKeyword.Location = new System.Drawing.Point(12, 145);
+            this.labelKeyword.Location = new System.Drawing.Point(12, 133);
             this.labelKeyword.Name = "labelKeyword";
             this.labelKeyword.Size = new System.Drawing.Size(95, 13);
             this.labelKeyword.TabIndex = 5;
@@ -99,7 +100,7 @@
             // 
             // textBoxKeyword
             // 
-            this.textBoxKeyword.Location = new System.Drawing.Point(154, 138);
+            this.textBoxKeyword.Location = new System.Drawing.Point(154, 126);
             this.textBoxKeyword.Name = "textBoxKeyword";
             this.textBoxKeyword.Size = new System.Drawing.Size(206, 20);
             this.textBoxKeyword.TabIndex = 6;
@@ -111,12 +112,12 @@
             this.panel1.Controls.Add(this.checkedListBoxKeywords);
             this.panel1.Location = new System.Drawing.Point(15, 201);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(329, 333);
+            this.panel1.Size = new System.Drawing.Size(329, 263);
             this.panel1.TabIndex = 7;
             // 
             // buttonDeleteTopic
             // 
-            this.buttonDeleteTopic.Location = new System.Drawing.Point(219, 214);
+            this.buttonDeleteTopic.Location = new System.Drawing.Point(219, 202);
             this.buttonDeleteTopic.Name = "buttonDeleteTopic";
             this.buttonDeleteTopic.Size = new System.Drawing.Size(93, 23);
             this.buttonDeleteTopic.TabIndex = 2;
@@ -126,7 +127,7 @@
             // 
             // buttonDeleteKeywords
             // 
-            this.buttonDeleteKeywords.Location = new System.Drawing.Point(13, 214);
+            this.buttonDeleteKeywords.Location = new System.Drawing.Point(13, 202);
             this.buttonDeleteKeywords.Name = "buttonDeleteKeywords";
             this.buttonDeleteKeywords.Size = new System.Drawing.Size(108, 23);
             this.buttonDeleteKeywords.TabIndex = 1;
@@ -144,7 +145,7 @@
             // 
             // buttonAddKeyword
             // 
-            this.buttonAddKeyword.Location = new System.Drawing.Point(15, 172);
+            this.buttonAddKeyword.Location = new System.Drawing.Point(15, 159);
             this.buttonAddKeyword.Name = "buttonAddKeyword";
             this.buttonAddKeyword.Size = new System.Drawing.Size(75, 23);
             this.buttonAddKeyword.TabIndex = 8;
@@ -152,11 +153,21 @@
             this.buttonAddKeyword.UseVisualStyleBackColor = true;
             this.buttonAddKeyword.Click += new System.EventHandler(this.buttonAddKeyword_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Select Topic";
+            // 
             // ManageTopicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 575);
+            this.ClientSize = new System.Drawing.Size(375, 537);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAddKeyword);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBoxKeyword);
@@ -188,5 +199,6 @@
         private System.Windows.Forms.Button buttonDeleteKeywords;
         private System.Windows.Forms.CheckedListBox checkedListBoxKeywords;
         private System.Windows.Forms.Button buttonAddKeyword;
+        private System.Windows.Forms.Label label1;
     }
 }
