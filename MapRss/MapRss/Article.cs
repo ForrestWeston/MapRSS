@@ -17,6 +17,8 @@ namespace MapRss
         public DateTime Date { get; set; }
         public string Link { get; set; }
         public string Location { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
 
 
         #endregion
@@ -61,6 +63,8 @@ namespace MapRss
                 {
                     city = lines[i][3];
                     state = lines[i][2];
+                    latitude = Convert.ToDouble(lines[i][5]);
+                    longitude = Convert.ToDouble(lines[i][6]);
                     break;
                 }
 
@@ -68,6 +72,8 @@ namespace MapRss
                 {
                     state = lines[i][2];
                     city = lines[i][3];
+                    latitude = Convert.ToDouble(lines[i][5]);
+                    longitude = Convert.ToDouble(lines[i][6]);
                     break;
                 }
                 i++;
@@ -81,8 +87,7 @@ namespace MapRss
             else
             {
                 return String.Empty;
-            }
-
+            }            
 
         }
 
