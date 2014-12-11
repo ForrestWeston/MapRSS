@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF">
     <Grid Height="255" Width="441">
+        
         <m:Map Name="Map" Margin="-383,0,-289,-176" CredentialsProvider="Ap29TI6ZXw42NFfZczK2D9Wxx0DZeFmT2QeDASKj-xY0lariAngGUsSdokjMLXUP"
-               Center="30.620574, -100.34942" ZoomLevel="3.6"/>
+               Center="30.620574, -100.34942" ZoomLevel="3.6" />
     </Grid>
 </UserControl>

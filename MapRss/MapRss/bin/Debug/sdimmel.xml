@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sdimmel.xml>
+  <UserSetting>
+    <Username>sdimmel</Username>
+    <Password>sdimmel</Password>
+    <Refresh>60</Refresh>
+  </UserSetting>
+  <Feed>
+    <Title>ESPN.com</Title>
+    <Description>Latest news from ESPN.com</Description>
+    <Link>http://sports.espn.go.com/espn/rss/news</Link>
+    <Language>en-us</Language>
+    <PublishDate />
+  </Feed>
+</sdimmel.xml>

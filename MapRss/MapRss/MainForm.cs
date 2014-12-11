@@ -129,6 +129,14 @@ namespace MapRss
                 ArticleDataGridView.Columns[i].ReadOnly = true;
                 //ArticleDataGridView.Columns[i].DefaultCellStyle.BackColor = Color.Khaki;
             }
+            MapControl mymap = new MapControl();
+           
+            var myArticles = new List<Article>(currentUser.GetUserArticles(currentTreeView.SelectedNode.Text));
+
+            mapControl1.addPins(myArticles);
+            //mymap.addPins(myArticles);      
+            
+           
 
         }
         private void ArticleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
