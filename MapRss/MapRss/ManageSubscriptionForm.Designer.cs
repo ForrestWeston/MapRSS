@@ -31,9 +31,7 @@
             this.ManageAcceptButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ManageFeedAddButton = new System.Windows.Forms.Button();
-            this.ManageTopicUpDown = new System.Windows.Forms.DomainUpDown();
             this.ManageURLTextBox = new System.Windows.Forms.TextBox();
-            this.ManageTopicLable = new System.Windows.Forms.Label();
             this.ManageUrlLable = new System.Windows.Forms.Label();
             this.ManageDeleteFeedButton = new System.Windows.Forms.Button();
             this.SubscriptionDataGridView = new System.Windows.Forms.DataGridView();
@@ -67,9 +65,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.ManageFeedAddButton);
-            this.splitContainer1.Panel1.Controls.Add(this.ManageTopicUpDown);
             this.splitContainer1.Panel1.Controls.Add(this.ManageURLTextBox);
-            this.splitContainer1.Panel1.Controls.Add(this.ManageTopicLable);
             this.splitContainer1.Panel1.Controls.Add(this.ManageUrlLable);
             // 
             // splitContainer1.Panel2
@@ -90,16 +86,6 @@
             this.ManageFeedAddButton.UseVisualStyleBackColor = true;
             this.ManageFeedAddButton.Click += new System.EventHandler(this.ManageFeedAddButton_Click);
             // 
-            // ManageTopicUpDown
-            // 
-            this.ManageTopicUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManageTopicUpDown.Location = new System.Drawing.Point(3, 68);
-            this.ManageTopicUpDown.Name = "ManageTopicUpDown";
-            this.ManageTopicUpDown.Size = new System.Drawing.Size(704, 20);
-            this.ManageTopicUpDown.TabIndex = 9;
-            // 
             // ManageURLTextBox
             // 
             this.ManageURLTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -109,15 +95,6 @@
             this.ManageURLTextBox.Name = "ManageURLTextBox";
             this.ManageURLTextBox.Size = new System.Drawing.Size(704, 20);
             this.ManageURLTextBox.TabIndex = 8;
-            // 
-            // ManageTopicLable
-            // 
-            this.ManageTopicLable.AutoSize = true;
-            this.ManageTopicLable.Location = new System.Drawing.Point(3, 52);
-            this.ManageTopicLable.Name = "ManageTopicLable";
-            this.ManageTopicLable.Size = new System.Drawing.Size(80, 13);
-            this.ManageTopicLable.TabIndex = 7;
-            this.ManageTopicLable.Text = "Topic (optional)";
             // 
             // ManageUrlLable
             // 
@@ -174,9 +151,7 @@
 
         private System.Windows.Forms.Button ManageAcceptButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DomainUpDown ManageTopicUpDown;
         private System.Windows.Forms.TextBox ManageURLTextBox;
-        private System.Windows.Forms.Label ManageTopicLable;
         private System.Windows.Forms.Label ManageUrlLable;
         private System.Windows.Forms.DataGridView SubscriptionDataGridView;
         private System.Windows.Forms.Button ManageFeedAddButton;

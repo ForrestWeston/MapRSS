@@ -39,6 +39,8 @@
             this.BrowserTabPage = new System.Windows.Forms.TabPage();
             this.WebBrowser = new System.Windows.Forms.WebBrowser();
             this.MapTabPage = new System.Windows.Forms.TabPage();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.mapControl1 = new MapRss.MapControl();
             this.ArticleDataGridView = new System.Windows.Forms.DataGridView();
             this.FeedTopicTabControl = new System.Windows.Forms.TabControl();
             this.FeedTabPage = new System.Windows.Forms.TabPage();
@@ -46,8 +48,6 @@
             this.TopicTabPage = new System.Windows.Forms.TabPage();
             this.TopicTreeView = new System.Windows.Forms.TreeView();
             this.AddButton = new System.Windows.Forms.Button();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.mapControl1 = new MapRss.MapControl();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabGridViewsplitContainer)).BeginInit();
             this.TabGridViewsplitContainer.Panel1.SuspendLayout();
@@ -175,6 +175,17 @@
             this.MapTabPage.Text = "Map";
             this.MapTabPage.UseVisualStyleBackColor = true;
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(3, 3);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(518, 355);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.elementHost1_ChildChanged);
+            this.elementHost1.Child = this.mapControl1;
+            // 
             // ArticleDataGridView
             // 
             this.ArticleDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
@@ -242,6 +253,7 @@
             this.TopicTreeView.Name = "TopicTreeView";
             this.TopicTreeView.Size = new System.Drawing.Size(162, 476);
             this.TopicTreeView.TabIndex = 0;
+            this.TopicTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TopicTreeView_AfterSelect);
             // 
             // AddButton
             // 
@@ -252,17 +264,6 @@
             this.AddButton.Text = "Manage";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost1.Location = new System.Drawing.Point(3, 3);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(518, 355);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.elementHost1_ChildChanged);
-            this.elementHost1.Child = this.mapControl1;
             // 
             // MainForm
             // 
