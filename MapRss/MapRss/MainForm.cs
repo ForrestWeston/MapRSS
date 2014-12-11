@@ -23,7 +23,16 @@ namespace MapRss
         {
             InitializeComponent();
             WebBrowser.ScriptErrorsSuppressed = true;
+
+            mapControl1.clicked += mapControl1_clicked;
             
+        }
+
+        void mapControl1_clicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            string url = sender as string;
+            WebBrowser.Url = new Uri(url);
+            BrowserMapTabControl.SelectedIndex = 0;
         }
 
         #region User Manipulation
@@ -129,7 +138,6 @@ namespace MapRss
                 ArticleDataGridView.Columns[i].ReadOnly = true;
                 //ArticleDataGridView.Columns[i].DefaultCellStyle.BackColor = Color.Khaki;
             }
-            MapControl mymap = new MapControl();
            
             var myArticles = new List<Article>(currentUser.GetUserArticles(currentTreeView.SelectedNode.Text));
 
@@ -177,6 +185,12 @@ namespace MapRss
         private void elementHost1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
 
+        }
+
+        public void pin_Clicked(string url)
+        {
+            WebBrowser.Url = new Uri(url);
+            BrowserMapTabControl.SelectedIndex = 0;
         }
 
 

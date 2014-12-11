@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kyle.xml>
+  <UserSetting>
+    <Username>kyle</Username>
+    <Password>1</Password>
+    <Refresh>60</Refresh>
+  </UserSetting>
+  <Feed>
+    <Title>U.S. News - News</Title>
+    <Description>Get breaking news headlines with the latest news from the US and current world news stories. Read about the US government and economy, the Obama administration, and war in Iraq and Afghanistan.</Description>
+    <Link>http://www.usnews.com/rss/news</Link>
+    <Language>en-us</Language>
+    <PublishDate />
+  </Feed>
+</kyle.xml>
