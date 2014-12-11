@@ -81,12 +81,19 @@
     <Compile Include="ManageSubscriptionForm.Designer.cs">
       <DependentUpon>ManageSubscriptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageTopicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTopicForm.Designer.cs">
+      <DependentUpon>ManageTopicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapControl.xaml.cs">
       <DependentUpon>MapControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="Topic.cs" />
     <Compile Include="User.cs" />
     <Compile Include="CreateUserForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageSubscriptionForm.resx">
       <DependentUpon>ManageSubscriptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTopicForm.resx">
+      <DependentUpon>ManageTopicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
