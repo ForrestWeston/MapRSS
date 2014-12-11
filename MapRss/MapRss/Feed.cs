@@ -80,7 +80,11 @@ namespace MapRss
                     {                        
                         string title = item.SelectSingleNode("title").InnerText;
                         string datestr = item.SelectSingleNode("pubDate").InnerText;
+<<<<<<< HEAD
+                        datestr = datestr.Replace(" PST","");
+=======
                         datestr = datestr.Replace(" PST", "");
+>>>>>>> master
                         DateTime date = DateTime.Parse(datestr);
                         string link = item.SelectSingleNode("link").InnerText;
                         string description = item.SelectSingleNode("description").InnerText;

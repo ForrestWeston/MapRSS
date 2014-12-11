@@ -24,36 +24,34 @@ namespace MapRss
     /// </summary>
     public partial class MapControl : UserControl
     {
+
+        public event MouseButtonEventHandler clicked;
+        public double offset;
         public MapControl()
         {
             InitializeComponent();
-           
-            Map.MouseLeftButtonUp += new MouseButtonEventHandler(mapClick);  
-            
+            offset = 1;
+            Map.MouseLeftButtonUp += new MouseButtonEventHandler(mapClick);
+            Map.MouseLeftButtonUp += new MouseButtonEventHandler(doubleClick_offset);
         }
 
         public void addPins(List<Article> myarticle)
         {
             InitializeComponent();
-            Pushpin mypin;
+            //Pushpin mypin;
             this.Map.Children.Clear();
             for (int i = 0; i < myarticle.Count; i++)
             {
-                mypin = new Pushpin();
-                //mypin.MouseUp += new MouseButtonEventHandler(mapClick);
+                Pushpin mypin = new Pushpin();
                 mypin.Location = new Location(myarticle[i].latitude, myarticle[i].longitude);
                 mypin.Content = myarticle[i].Link;
-                mypin.MouseLeftButtonUp += new MouseButtonEventHandler(mypin_MouseLeftButtonUp);
                 mypin.ToolTip = myarticle[i].Title + "\n" + myarticle[i].Description;
                 this.Map.Children.Add(mypin);
             }
             
         }
 
-        void mypin_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
        
         private void mapClick(object sender, MouseButtonEventArgs e)
         {
@@ -72,10 +70,25 @@ namespace MapRss
                 if((0 < check_lat && check_lat < 4) && (-2 < check_long && check_long < 2))
                 {
                     //Process.Start(testPin.Content.ToString());
+                    if(null != clicked)
+                    {
+                        clicked(testPin.Content, null);
+                    }
                     return;
                 }
             }
             
+        }
+        private void doubleClick_offset(object sender, MouseButtonEventArgs e)
+        {
+           
+            LocationConverter locationConverter = new LocationConverter();
+            int count = this.Map.Children.Count;
+            Point clickPoint = e.GetPosition(this);
+            Location clickLocation = Map.ViewportPointToLocation(clickPoint);
+            double check_lat = clickLocation.Latitude;
+            double check_long = clickLocation.Longitude;
+            return;
         }
         
         
